@@ -1,5 +1,4 @@
 # Analiza podatkov s programom R, 2015/16
-# ANALIZA DOLGA IN LETNEGA PRIMAKLJAJA DRŽAV V EVROOBMOČJU
 
 Avtor: Patrik Gorše
 
