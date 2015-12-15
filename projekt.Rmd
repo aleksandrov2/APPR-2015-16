@@ -19,7 +19,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Izbral sem si temo dolgovi in primankljaji držav v Evropski uniji. To je zelo pomembna tema, saj bodo odločitve glede ukrepanja centralne banke uplivale na vsakdanje življenje vseh nas. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
+Izbral sem si temo dolgovi in primankljaji držav v Evropski uniji. To je zelo pomembna tema, saj bodo odločitve politikov in ekonomistov, kakšna naj bo naša strategija pri zadolževanju, uplivale na vsakdanje življenje vseh nas. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
 
 
 ***
