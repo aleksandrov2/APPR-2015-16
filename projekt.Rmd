@@ -22,7 +22,6 @@ source("lib/libraries.r", encoding = "UTF-8")
 Izbral sem si temo dolgovi in primankljaji držav v Evropski uniji. To je zelo pomembna tema, saj bodo odločitve politikov in ekonomistov, kakšna naj bo naša strategija pri zadolževanju, uplivale na vsakdanje življenje vseh nas. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
 
 
-***
 
 # Obdelava, uvoz in čiščenje podatkov
 
@@ -30,9 +29,9 @@ Izbral sem si temo dolgovi in primankljaji držav v Evropski uniji. To je zelo p
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Podatke za prvi dve tabeli sem našel na spletni strani OECD. Tam sem izbral samo podatke evropskih držav, potem pa sem prenesel cvs datoteki na računalnik. Tabelo, ki prikazuje tudi dolg ZDA v letih 2007, 2010 in 2011 v primerjavi z evropskimi državami, pa sem našel na wikipediji. 
+Podatke za prvi dve tabeli sem uvozil iz spletne strani OECD. Tam sem izbral samo podatke evropskih držav, potem pa sem uvozil cvs datoteki na računalnik. Tabelo, ki prikazuje tudi dolg ZDA v letih 2007, 2010 in 2011 v primerjavi z evropskimi državami, pa sem kot HTML datoteko uvozil iz Wikipedije. 
 
-Povezava za tabele:
+Povezavi za tabele:
 
 -https://data.oecd.org/gga/general-government-debt.htm
 
@@ -41,9 +40,30 @@ Povezava za tabele:
 Prva tabela prikazuje dolg evropskih držav, druga deficit teh držav in tretja prikazuje dolg ZDA v primerjavi z evropo. 
 
 Prva tabela:
-Sestavljena je iz stoplcev LOCATION,	INDICATOR,	SUBJECT,	MEASURE,	FREQUENCY,	TIME in	Value	Flag Codes.
+-LOCATION (ime države)
+-INDICATOR (dolg države)
+- SUBJECT 
+- MEASURE (merimo v BDP na prebivalca)
+- FREQUENCY
+- TIME (leto)
+- VALUE (višina zadolženosti)
+- Flag Codes
 
+Druga tabela: 
+-LOCATION (ime države)
+-INDICATOR (deficit države)
+- SUBJECT 
+- MEASURE (merimo v BDP na prebivalca)
+- FREQUENCY
+- TIME (leto)
+- VALUE (višina deficita)
+- Flag Codes
 
+Tretja tabela:
+-Entity (ime države)
+-2007 (pokaže višino zadolženosti države leta 2007)
+-2010 (pokaže višino zadolženosti države leta 2010)
+-2011 (pokaže višino zadolženosti države leta 2011)
 
 ```{r razpredelnice}
 kable(head(druzine))
