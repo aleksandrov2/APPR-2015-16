@@ -19,7 +19,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Izbral sem si temo dolgovi in primankljaji držav v Evropski uniji. To je zelo pomembna tema, saj bodo odločitve politikov in ekonomistov, kakšna naj bo naša strategija pri zadolževanju, uplivale na vsakdanje življenje vseh nas. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
+Izbral sem si temo "Dolgovi in primankljaji držav v Evropski uniji". To je zelo pomembna tema, saj bodo odločitve politikov in ekonomistov, kakšna naj bo naša strategija pri zadolževanju, uplivale na vsakdanje življenje vseh nas. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
 
 
 
@@ -68,6 +68,9 @@ Tretja tabela:
 - 2010 (pokaže višino zadolženosti države leta 2010)
 - 2011 (pokaže višino zadolženosti države leta 2011)
 
+V prvih dveh tabelah sem nepotrebne stolpce izbrisal. Prav tako sem ustvaril še veliko podtabel, ki prikazujejo zadolženost/deficit držav po posameznih letih. Za vsako leto od 2006 do 2014 sem naredil posebno podtabelo, ki prikazuje stanje držav glede na določeno leto. 
+
+Tretja tabela, ki je bila uvožena v HTML obliki vsebuje podatke zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. 
 
 
 Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
