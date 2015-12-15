@@ -29,8 +29,8 @@ Izbral sem si temo "Dolgovi in primankljaji držav v Evropski uniji". To je zelo
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Podatke za prvi dve tabeli sem uvozil iz spletne strani OECD. Tam sem izbral samo podatke evropskih držav, potem pa sem uvozil cvs datoteki na računalnik. Tabelo, ki prikazuje tudi dolg ZDA v letih 2007, 2010 in 2011 v primerjavi z evropskimi državami, pa sem kot HTML datoteko uvozil iz Wikipedije. 
-Prva tabela prikazuje dolg evropskih držav, druga deficit teh držav in tretja prikazuje dolg ZDA v primerjavi z evropskim.
+Podatke za prvi dve tabeli sem uvozil iz spletne strani OECD. Tam sem izbral samo podatke evropskih držav, potem pa sem uvozil cvs datoteki na računalnik. Tabelo, ki prikazuje tudi dolg ZDA in Japonske v letih 2007, 2010 in 2011 v primerjavi z evropskimi državami, pa sem kot HTML datoteko uvozil iz Wikipedije. 
+Prva tabela prikazuje dolg evropskih držav, druga deficit teh držav in tretja prikazuje dolg ZDA in Japonske v primerjavi z evropskim.
 
 Povezavi za tabele:
 - https://data.oecd.org/gga/general-government-debt.htm
@@ -70,15 +70,11 @@ Tretja tabela:
 
 V prvih dveh tabelah sem nepotrebne stolpce izbrisal. Prav tako sem ustvaril še veliko podtabel, ki prikazujejo zadolženost/deficit držav po posameznih letih. Za vsako leto od 2006 do 2014 sem naredil posebno podtabelo, ki prikazuje stanje držav glede na določeno leto. 
 
-Tretja tabela, ki je bila uvožena v HTML obliki vsebuje podatke zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. 
+Tretja tabela, ki je bila uvožena v HTML obliki vsebuje podatke zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. Nepotrebne vrstice sem izbrisal in naredil 3 podtabele, kjer vsaka prikazuje zadolženost držav v letih 2007, 2010 in 2011
 
 
-Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
 
-```{r histogram, echo=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-hist(obcine[,4], main = "Pogostost števila naselij",
-     xlab = "Število naselij", ylab = "Število občin")
-```
+
 
 ***
 
