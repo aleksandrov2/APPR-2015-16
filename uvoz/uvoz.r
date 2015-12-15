@@ -38,34 +38,61 @@ podatki2$INDICATOR <- NULL
 
 #zaokrožim zadnji stolpec na 2 dve decimalki
 
-podatki1[,5] <- round(podatki1[,5],2)
-podatki2[,5] <- round(podatki2[,5],2)
+podatki1[,3] <- round(podatki1[,3],2)
+podatki2[,3] <- round(podatki2[,3],2)
 
-#NAREDIM še za vsako leto posebej
+#Naredim še za vsako leto posebej IN naredim veliki tabeli, kjer so po vrsticah označene države po letih
 
-dolgovi_2006 <- podatki1[["2006"]]
-dolgovi_2007 <- podatki1[["2007"]]
-dolgovi_2008 <- podatki1[["2008"]]
-dolgovi_2009 <- podatki1[["2009"]]
-dolgovi_2010 <- podatki1[["2010"]]
-dolgovi_2011 <- podatki1[["2011"]]
-dolgovi_2012 <- podatki1[["2012"]]
-dolgovi_2013 <- podatki1[["2013"]]
-dolgovi_2014 <- podatki1[["2014"]]
+dolgovi <- lapply(2006:2014, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi)
+
+dolgovi_2006 <- lapply(2006, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2006)
+dolgovi_2007 <- lapply(2007, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2007)
+dolgovi_2008 <- lapply(2008, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2008)
+dolgovi_2009 <- lapply(2009, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2009)
+dolgovi_2010 <- lapply(2010, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2010)
+dolgovi_2011 <- lapply(2011, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2011)
+dolgovi_2012 <- lapply(2012, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2012)
+dolgovi_2013 <- lapply(2013, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2013)
+dolgovi_2014 <- lapply(2014, function(leto) filter(podatki1, TIME == leto))
+#View(dolgovi_2014)
 
 
-deficiti_2006 <- podatki2[["2006"]]
-deficiti_2007 <- podatki2[["2007"]]
-deficiti_2008 <- podatki2[["2008"]]
-deficiti_2009 <- podatki2[["2009"]]
-deficiti_2010 <- podatki2[["2010"]]
-deficiti_2011 <- podatki2[["2011"]]
-deficiti_2012 <- podatki2[["2012"]]
-deficiti_2013 <- podatki2[["2013"]]
-deficiti_2014 <- podatki2[["2014"]]
+
+deficiti <- lapply(2006:2014, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti)
+
+deficiti_2006 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2006)
+deficiti_2007 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2007)
+deficiti_2008 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2008)
+deficiti_2009 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2009)
+deficiti_2010 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2010)
+deficiti_2011 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2011)
+deficiti_2012 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2012)
+deficiti_2013 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2013)
+deficiti_2014 <- lapply(2006, function(leto) filter(podatki2, TIME == leto))
+#View(deficiti_2014)
 
 
 #sedaj narišem grafe po posameznih letih
+
+#ggplot(dolgovi[[1]], aes(x = LOCATION, y = Value)) + geom_bar(stat ="identity")
 
 #ggplot(data=dolgovi_2014), aes(x=LOCATION, y=value)) + geom_point()
 #ggplot(data=deficiti_2014), aes(x=LOCATION, y=value)) + geom_point()
