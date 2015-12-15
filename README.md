@@ -6,7 +6,7 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2015/16.
 ## ANALIZA DOLGA IN LETNEGA PRIMAKLJAJA DRŽAV V EVROOBMOČJU
 Dolgovi in primakljaji držav so zelo vroča tema v Evropski uniji. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
 
-Analiziral bom podatke držav evroobmočja, torej njihove letne primakljaje, delež zadolženosti glede na BDP in poskusil na grobo oceniti korelacijo med zadolženostjo in razvitostjo razičnih EU držav. 
+Analiziral bom podatke držav evroobmočja, torej njihove letne primakljaje, delež zadolženosti glede na BDP in poskusil na grobo oceniti korelacijo med zadolženostjo in razvitostjo razičnih EU držav. Glede na to, da so ZDA najbolj razvita država na svetu, če kot merilo uporabimo bruto domači proizvod na prebivalca, bom tudi primerjal njihov in naš (evropski) dolg.
 
 Podatke bom pridobival iz:
 
