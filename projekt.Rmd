@@ -34,6 +34,7 @@ Podatke za obe tabeli sem našel na spletni strani OECD. Tam sem najprej izbral 
 
 Povezava za tabele:
 -https://data.oecd.org/gga/general-government-debt.htm
+
 -http://www.stat.si/statweb
 
 Prva tabela prikazuje dolg evropskih držav od leta 2006 do 2014, druga pa deficit teh držav na enakem časovnem intervalu. 
