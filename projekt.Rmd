@@ -30,6 +30,7 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
 Podatke za prvi dve tabeli sem uvozil iz spletne strani OECD. Tam sem izbral samo podatke evropskih držav, potem pa sem uvozil cvs datoteki na računalnik. Tabelo, ki prikazuje tudi dolg ZDA v letih 2007, 2010 in 2011 v primerjavi z evropskimi državami, pa sem kot HTML datoteko uvozil iz Wikipedije. 
+Prva tabela prikazuje dolg evropskih držav, druga deficit teh držav in tretja prikazuje dolg ZDA v primerjavi z evropskim.
 
 Povezavi za tabele:
 - https://data.oecd.org/gga/general-government-debt.htm
@@ -38,7 +39,7 @@ Povezavi za tabele:
 ***
 
 
-Prva tabela prikazuje dolg evropskih držav, druga deficit teh držav in tretja prikazuje dolg ZDA v primerjavi z evropskim. 
+Spodaj so po posameznih tabelah prikazani stolpci 
 
 
 Prva tabela:
@@ -67,10 +68,7 @@ Tretja tabela:
 - 2010 (pokaže višino zadolženosti države leta 2010)
 - 2011 (pokaže višino zadolženosti države leta 2011)
 
-```{r razpredelnice}
-kable(head(druzine))
-head(obcine)
-```
+
 
 Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
 
