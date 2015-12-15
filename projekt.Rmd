@@ -37,9 +37,12 @@ Povezavi za tabele:
 
 -https://en.wikipedia.org/wiki/National_debt_of_the_United_States
 
-Prva tabela prikazuje dolg evropskih držav, druga deficit teh držav in tretja prikazuje dolg ZDA v primerjavi z evropo. 
+***
+
+Prva tabela prikazuje dolg evropskih držav, druga deficit teh držav in tretja prikazuje dolg ZDA v primerjavi z evropskim. 
 
 Prva tabela:
+
 -LOCATION (ime države)
 -INDICATOR (dolg države)
 - SUBJECT 
@@ -50,6 +53,7 @@ Prva tabela:
 - Flag Codes
 
 Druga tabela: 
+
 -LOCATION (ime države)
 -INDICATOR (deficit države)
 - SUBJECT 
@@ -60,6 +64,7 @@ Druga tabela:
 - Flag Codes
 
 Tretja tabela:
+
 -Entity (ime države)
 -2007 (pokaže višino zadolženosti države leta 2007)
 -2010 (pokaže višino zadolženosti države leta 2010)
