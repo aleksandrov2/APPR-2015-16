@@ -30,6 +30,12 @@ podatki2$FREQUENCY <- NULL
 podatki1$SUBJECT <- NULL
 podatki2$SUBJECT <- NULL
 
+podatki1$MEASURE <- NULL
+podatki2$MEASURE <- NULL
+
+podatki1$INDICATOR <- NULL
+podatki2$INDICATOR <- NULL
+
 #zaokrožim zadnji stolpec na 2 dve decimalki
 
 podatki1[,5] <- round(podatki1[,5],2)
