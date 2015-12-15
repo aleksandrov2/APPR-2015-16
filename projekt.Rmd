@@ -62,11 +62,10 @@ Druga tabela:
 - Flag Codes
 
 Tretja tabela:
-
--Entity (ime države)
--2007 (pokaže višino zadolženosti države leta 2007)
--2010 (pokaže višino zadolženosti države leta 2010)
--2011 (pokaže višino zadolženosti države leta 2011)
+- Entity (ime države)
+- 2007 (pokaže višino zadolženosti države leta 2007)
+- 2010 (pokaže višino zadolženosti države leta 2010)
+- 2011 (pokaže višino zadolženosti države leta 2011)
 
 ```{r razpredelnice}
 kable(head(druzine))
