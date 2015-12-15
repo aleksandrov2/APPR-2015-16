@@ -19,7 +19,8 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Izbral sem si temo dolgovi in primankljaji držav v Evropski uniji. To je zelo pomembna tema, saj bodo odločitve glede ukrepanja centralne banke uplivale na vsakdanje življenje vseh nas. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
+
 
 ***
 
@@ -29,8 +30,17 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
+Podatke za obe tabeli sem našel na spletni strani OECD. Tam sem najprej izbral podatke od evropskih držav, potem pa sem prenesel cvs datoteki. 
+
+Povezava za tabele:
+-https://data.oecd.org/gga/general-government-debt.htm
+-http://www.stat.si/statweb
+
+Prva tabela prikazuje dolg evropskih držav od leta 2006 do 2014, druga pa deficit teh držav na enakem časovnem intervalu. 
+
+Seveda sem najprej izbrisal nepotrebne stolpce in izdelal še nove tabele, ki prikazujejo dolg in deficit evropskih držav glede na posamezno leto. 
+
+
 
 ```{r razpredelnice}
 kable(head(druzine))
