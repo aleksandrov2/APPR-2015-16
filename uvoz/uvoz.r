@@ -153,33 +153,43 @@ names(evropa_deficiti) <- c("2006","2007","2008","2009","2010","2011","2012","20
 
 
 #GRAFI
-#sedaj narišem grafe po posameznih letih
 
-prvi_graf <- ggplot(dolgovi[[1]], aes(x = Država, y = Dolg)) + geom_bar(stat ="identity")
+#Stolpičasti graf dolga evropskih držav v določenem letu
+
+prvi_graf <- ggplot(dolgovi[[1]], aes(x = Država, y = Dolg)) + geom_bar(stat ="identity", mode = "markers")
+                                                                        
 #plot(prvi_graf)
 
 
-#ggplot(data=dolgovi_2014), aes(x=LOCATION, y=value)) + geom_point()
-#ggplot(data=deficiti_2014), aes(x=LOCATION, y=value)) + geom_point()
+#Stolpični graf ki prikaže države z dolgom več kot 100% v nekem letu
+
+drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), aes(x = Država, y = Dolg)) + geom_bar(stat ="identity", mode = "markers")
+
+#plot(drugi_graf)
 
 
 
-#graf ki prikaže države z dolgom več kot 100%
+#Geometric point graf dolga držav v nekem letu z povprečjem
 
-#ggplot(data=dolgovi_2014 %>% filter(Value>100), aes(x=LOCATION, y=Value)) + geom_point()
+tretji_graf <- ggplot(dolgovi[[9]], aes(x = Država, y = Dolg)) + geom_point() + geom_hline()
 
-
-
-#graf rasti zadolženosti slovenije 
-
-#slovenija<-podatki1[podatki1[["LOCATION"]] == "SVN",]
-#ggplot(data=SVN, aes(y=Value,x=TIME)) + geom_point() 
+#plot(tretji_graf)
 
 
+#Graf rasti zadolženosti slovenije od leta 2006 do leta 2014 
+
+četrti_graf <- ggplot(evropa_dolgovi, aes(x = Leto, y = Dolg)) + geom_bar(stat ="identity", mode = "markers")
+
+#View(četrti_graf)
 
 
-#graf prikazuje zadolženost, barve pik razlikujejo leta
 
-#p<-ggplot(dolgovi_2014) + aes(x = Država, y = Dolg) + geom_point()
-#p + aes(x = Država, y = Dolg, color = Čas) + geom_point()
-#plot(p)
+#Graf s krogi, večji kot je krog večja sta dolg in deficit te države. 
+#Vsaka država je predstavljena s krogom svoje barve. 
+#Na abscisi je prikazan deficit države v nekem letu npr. v letu 2014.
+#Na ordinati je prikazan dolg te države v nekem letu npr. v letu 2014.
+#Torej ta graf bo imel za vsako državo prikazan krog svoje barve in 
+# ta krog bo prikazoval dolg in deficit te države v danem letu.
+
+
+
