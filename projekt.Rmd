@@ -1,6 +1,6 @@
 ---
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+author: "Patrik Gorše"
 output:
   pdf_document:
     latex_engine: xelatex

@@ -1,16 +1,36 @@
 # 2. faza: Uvoz
-
-require(dplyr)
+library(ggplot2)
+library(dplyr)
+require(gsubfn)
 require(rvest)
 require(xml2)
-#require(ggplot)
+require(ggplot2)
 
-#link do uradne strani OECD kjer sem dobil podatke
 
-link <- "https://data.oecd.org/gga/general-government-debt.htm"
-podstran <- html_session(link) %>% read_html()
-podstran
+#HTML UVOZ
+#link do wikipedije kjer sem dobil podatke
+link <- "https://en.wikipedia.org/wiki/National_debt_of_the_United_States"
 
+#Uvozim tabelo
+stran <- html_session(link) %>% read_html()
+tabela <- stran %>%
+  html_node(xpath="//table[@class='wikitable sortable']") %>%
+  html_table()
+
+
+#Popravim imena stolpca
+tabela <- rename(tabela, Država=Entity)
+
+#Odstranim % in spremenim nize v števila
+
+tabela[-1] <- apply(tabela[-1], 2, . %>% strapplyc("([0-9]+)") %>% unlist() %>% as.numeric())
+
+
+#View(tabela)
+
+
+
+#CSV DATOTEKE
 #ustvarim tabeli
 
 podatki1 <- read.csv("podatki/government_debt.csv")
@@ -41,18 +61,21 @@ podatki2$MEASURE <- NULL
 podatki1[,3] <- round(podatki1[,3],2)
 podatki2[,3] <- round(podatki2[,3],2)
 
+
 #Spremenim imena stolpcev 
 
-podatki1 <- rename(podatki1, Država=ď.żLOCATION, Čas=TIME, Dolg=Value)
-podatki2 <- rename(podatki2, Država=ď.żLOCATION, Čas=TIME, Deficit=Value)
+podatki1 <- rename(podatki1, Država=ï..LOCATION, Čas=TIME, Dolg=Value)
+podatki2 <- rename(podatki2, Država=ï..LOCATION, Čas=TIME, Deficit=Value)
 
-#Naredim inner_join obeh 
+
+#Naredim inner_join obeh tabel tako, da imam po stolpcih države, leto, dolg in deficit
 
 podatki3 <- inner_join(podatki1,podatki2)
 
-View(podatki1)
-View(podatki2)
-View(podatki3)
+
+#View(podatki1)
+#View(podatki2)
+#View(podatki3)
 
 #Naredim še za vsako leto posebej tabele za dolgove in deficite
 
@@ -79,7 +102,6 @@ dolgovi_2014 <- lapply(2014, function(leto) filter(podatki1, Čas == leto))
 #View(dolgovi_2014)
 
 
-
 deficiti <- lapply(2006:2014, function(leto) filter(podatki2, Čas == leto))
 #View(deficiti)
 
@@ -102,15 +124,40 @@ deficiti_2013 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
 deficiti_2014 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
 #View(deficiti_2014)
 
-#Naredim združeno inner_join tabelo po vseh letih od 2006 do 2014
-
-evropa <- lapply(2006:2014, function(leto) filter(podatki3, Čas == leto))
-View(evropa)
 
 
+#Naredim tabelo, ki ima en stolpec države in potem stolpce z leti, prikazuje dolg držav vsako leto posebej
+
+leta <- unique(podatki1$Cas)
+evropa_dolgovi <- sapply(leta, . %>% {filter(podatki1, Cas == .) %>% {setNames(.$Dolg, .$Država)}}) %>% data.frame()
+
+#Preimenujem stolpce v leta
+
+names(evropa_dolgovi) <- c("2006","2007","2008","2009","2010","2011","2012","2013","2014")
+
+#View(evropa_dolgovi)
+
+
+#Naredim tabelo, ki ima en stolpec države in potem stolpce z leti, prikazuje deficit držav vsako leto posebej
+
+leta <- unique(podatki2$Cas)
+evropa_deficiti <- sapply(leta, . %>% {filter(podatki2, Cas == .) %>% {setNames(.$Deficit, .$Država)}}) %>% data.frame()
+
+#Preimenujem stolpce v leta
+
+names(evropa_deficiti) <- c("2006","2007","2008","2009","2010","2011","2012","2013","2014")
+
+#View(evropa_deficiti)
+
+
+
+
+#GRAFI
 #sedaj narišem grafe po posameznih letih
 
-#ggplot(dolgovi[[1]], aes(x = LOCATION, y = Value)) + geom_bar(stat ="identity")
+prvi_graf <- ggplot(dolgovi[[1]], aes(x = Država, y = Dolg)) + geom_bar(stat ="identity")
+#plot(prvi_graf)
+
 
 #ggplot(data=dolgovi_2014), aes(x=LOCATION, y=value)) + geom_point()
 #ggplot(data=deficiti_2014), aes(x=LOCATION, y=value)) + geom_point()
@@ -133,5 +180,6 @@ View(evropa)
 
 #graf prikazuje zadolženost, barve pik razlikujejo leta
 
-#p<-ggplot(dolgovi_2014) + aes(x = LOCATION, y = Value) + geom_point()
-#p + aes(x = LOCATION, y = Value, color = TIME) + geom_point()
+#p<-ggplot(dolgovi_2014) + aes(x = Država, y = Dolg) + geom_point()
+#p + aes(x = Država, y = Dolg, color = Čas) + geom_point()
+#plot(p)
