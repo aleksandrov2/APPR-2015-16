@@ -25,9 +25,17 @@ tabela <- rename(tabela, Država=Entity)
 
 tabela[-1] <- apply(tabela[-1], 2, . %>% strapplyc("([0-9]+)") %>% unlist() %>% as.numeric())
 
-
 #View(tabela)
 
+#naredim 3 tabele po letih 2007, 2010, 2011
+
+tabela_1 <- tabela[c("Država", "2007")]
+tabela_2 <- tabela[c("Država", "2010")]
+tabela_3 <- tabela[c("Država", "2011")]
+
+#View(tabela_1)
+#View(tabela_2)
+#View(tabela_3)
 
 
 #CSV DATOTEKE
