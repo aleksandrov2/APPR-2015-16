@@ -11,7 +11,6 @@ Analiziral bom podatke držav evroobmočja, torej njihove letne primakljaje, del
 Podatke bom pridobival iz:
 
 - https://data.oecd.org/gga/general-government-debt.htm 
-- http://www.stat.si/statweb 
 - https://en.wikipedia.org/wiki/National_debt_of_the_United_States
 
 ## Program
