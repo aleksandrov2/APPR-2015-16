@@ -163,14 +163,16 @@ names(evropa_deficiti) <- c("2006","2007","2008","2009","2010","2011","2012","20
 
 #Stolpičasti graf dolga evropskih držav v določenem letu
 
-prvi_graf <- ggplot(dolgovi[[1]], aes(x = Drzava, y = Dolg, fill = Dolg)) + geom_bar(stat ="identity", mode = "markers")
+prvi_graf <- ggplot(dolgovi[[1]], aes(x = Drzava, y = Dolg, fill = Dolg)) + 
+  geom_bar(stat ="identity", mode = "markers")
                                                                         
 #plot(prvi_graf)
 
 
 #Stolpični graf ki prikaže države z dolgom več kot 100% v nekem letu
 
-drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), aes(x = Drzava, y = Dolg)) + geom_bar(stat ="identity", mode = "markers", fill = rainbow(9) )
+drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), aes(x = Drzava, y = Dolg)) + 
+  geom_bar(stat ="identity", mode = "markers", fill = rainbow(9) )
 
 #plot(drugi_graf)
 
@@ -180,23 +182,24 @@ drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), aes(x = Drzava, y = Dolg
 
 #povprecje <- sum(dolgovi_2014$Dolg)
 
-tretji_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg)) + geom_point() + geom_hline()
+tretji_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg)) + 
+  geom_point() + geom_hline()
 
-#plot(tretji_graf)
+plot(tretji_graf)
 
 
 
 
 #Graf rasti zadolženosti slovenije od leta 2006 do leta 2014 
 
-#evropa_dolgovi_leta <- data.frame(leto = 2006:2014, t(evropa_dolgovi_leta))
+evropa_dolgovi_leta <- data.frame(Leto = 2006:2014, t(evropa_dolgovi))
 
 #View(evropa_dolgovi_leta)
 
-#cetrti_graf <- ggplot(evropa_dolgovi, aes(x = leto, y = SVN)) + geom_bar(stat ="identity", mode = "markers")
+cetrti_graf <- ggplot(evropa_dolgovi_leta, aes(x = Leto, y = SVN)) +
+  geom_bar(stat ="identity", mode = "markers", fill="blue")
 
-
-#plot(četrti_graf)
+#plot(cetrti_graf)
 
 
 
@@ -207,8 +210,9 @@ tretji_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg)) + geom_point() + 
 #Torej ta graf bo imel za vsako državo prikazan krog svoje barve in 
 # ta krog bo prikazoval dolg in deficit te države v danem letu.
 
-peti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, y = Deficit, color =
-                                               Drzava, size = Dolg-10*Deficit)) + guides(color = guide_legend(ncol = 2)) + geom_point()
+peti_graf <- ggplot(podatki3 %>% filter(Cas == 2010), aes(x = Dolg, 
+  y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
+  guides(color = guide_legend(ncol = 2)) + geom_point()
 
 #plot(peti_graf)
 
@@ -216,10 +220,12 @@ peti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, y = Deficit,
 
 #Stolpični graf, kjer primerjam zadolženost evropskih držav z ZDA in Japonsko 
 
-#tabela_3_6 <- tabela_3
-#tabela_3_6 <- rename(tabela_3_6, Dolg=2011)
+tabela_3_6 <- tabela_3
+tabela_3_6 <- rename(tabela_3_6, Dolg=`2011`)
+tabela_3_6 <- tabela_3_6[-c(18,19,20),]
 #View(tabela_3_6)
 
-#sesti_graf <- ggplot(tabela_3, aes(x = Drzava, y = Dolg)) + geom_bar(stat ="identity", mode = "markers", fill = "blue")
+sesti_graf <- ggplot(tabela_3_6, aes(x = Drzava, y = Dolg, fill = Dolg)) + 
+  geom_bar(stat ="identity", mode = "markers")
 
 #plot(sesti_graf)
