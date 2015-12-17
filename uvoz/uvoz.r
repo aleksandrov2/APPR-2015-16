@@ -19,7 +19,7 @@ tabela <- stran %>%
 
 
 #Popravim imena stolpca
-tabela <- rename(tabela, Država=Entity)
+tabela <- rename(tabela, Drzava=Entity)
 
 #Odstranim % in spremenim nize v števila
 
@@ -29,9 +29,9 @@ tabela[-1] <- apply(tabela[-1], 2, . %>% strapplyc("([0-9]+)") %>% unlist() %>% 
 
 #naredim 3 tabele po letih 2007, 2010, 2011
 
-tabela_1 <- tabela[c("Država", "2007")]
-tabela_2 <- tabela[c("Država", "2010")]
-tabela_3 <- tabela[c("Država", "2011")]
+tabela_1 <- tabela[c("Drzava", "2007")]
+tabela_2 <- tabela[c("Drzava", "2010")]
+tabela_3 <- tabela[c("Drzava", "2011")]
 
 #View(tabela_1)
 #View(tabela_2)
@@ -72,8 +72,8 @@ podatki2[,3] <- round(podatki2[,3],2)
 
 #Spremenim imena stolpcev 
 
-podatki1 <- rename(podatki1, Država=ï..LOCATION, Čas=TIME, Dolg=Value)
-podatki2 <- rename(podatki2, Država=ï..LOCATION, Čas=TIME, Deficit=Value)
+podatki1 <- rename(podatki1, Drzava=ï..LOCATION, Cas=TIME, Dolg=Value)
+podatki2 <- rename(podatki2, Drzava=ï..LOCATION, Cas=TIME, Deficit=Value)
 
 
 #Naredim inner_join obeh tabel tako, da imam po stolpcih države, leto, dolg in deficit
@@ -87,49 +87,48 @@ podatki3 <- inner_join(podatki1,podatki2)
 
 #Naredim še za vsako leto posebej tabele za dolgove in deficite
 
-dolgovi <- lapply(2006:2014, function(leto) filter(podatki1, Čas == leto))
+dolgovi <- lapply(2006:2014, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi)
 
-dolgovi_2006 <- lapply(2006, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2006 <- lapply(2006, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2006)
-dolgovi_2007 <- lapply(2007, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2007 <- lapply(2007, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2007)
-dolgovi_2008 <- lapply(2008, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2008 <- lapply(2008, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2008)
-dolgovi_2009 <- lapply(2009, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2009 <- lapply(2009, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2009)
-dolgovi_2010 <- lapply(2010, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2010 <- lapply(2010, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2010)
-dolgovi_2011 <- lapply(2011, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2011 <- lapply(2011, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2011)
-dolgovi_2012 <- lapply(2012, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2012 <- lapply(2012, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2012)
-dolgovi_2013 <- lapply(2013, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2013 <- lapply(2013, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2013)
-dolgovi_2014 <- lapply(2014, function(leto) filter(podatki1, Čas == leto))
+dolgovi_2014 <- lapply(2014, function(leto) filter(podatki1, Cas == leto))
 #View(dolgovi_2014)
 
-
-deficiti <- lapply(2006:2014, function(leto) filter(podatki2, Čas == leto))
+deficiti <- lapply(2006:2014, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti)
 
-deficiti_2006 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2006 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2006)
-deficiti_2007 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2007 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2007)
-deficiti_2008 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2008 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2008)
-deficiti_2009 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2009 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2009)
-deficiti_2010 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2010 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2010)
-deficiti_2011 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2011 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2011)
-deficiti_2012 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2012 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2012)
-deficiti_2013 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2013 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2013)
-deficiti_2014 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
+deficiti_2014 <- lapply(2006, function(leto) filter(podatki2, Cas == leto))
 #View(deficiti_2014)
 
 
@@ -137,7 +136,7 @@ deficiti_2014 <- lapply(2006, function(leto) filter(podatki2, Čas == leto))
 #Naredim tabelo, ki ima en stolpec države in potem stolpce z leti, prikazuje dolg držav vsako leto posebej
 
 leta <- unique(podatki1$Cas)
-evropa_dolgovi <- sapply(leta, . %>% {filter(podatki1, Cas == .) %>% {setNames(.$Dolg, .$Država)}}) %>% data.frame()
+evropa_dolgovi <- sapply(leta, . %>% {filter(podatki1, Cas == .) %>% {setNames(.$Dolg, .$Drzava)}}) %>% data.frame()
 
 #Preimenujem stolpce v leta
 
@@ -149,7 +148,7 @@ names(evropa_dolgovi) <- c("2006","2007","2008","2009","2010","2011","2012","201
 #Naredim tabelo, ki ima en stolpec države in potem stolpce z leti, prikazuje deficit držav vsako leto posebej
 
 leta <- unique(podatki2$Cas)
-evropa_deficiti <- sapply(leta, . %>% {filter(podatki2, Cas == .) %>% {setNames(.$Deficit, .$Država)}}) %>% data.frame()
+evropa_deficiti <- sapply(leta, . %>% {filter(podatki2, Cas == .) %>% {setNames(.$Deficit, .$Drzava)}}) %>% data.frame()
 
 #Preimenujem stolpce v leta
 
@@ -164,14 +163,14 @@ names(evropa_deficiti) <- c("2006","2007","2008","2009","2010","2011","2012","20
 
 #Stolpičasti graf dolga evropskih držav v določenem letu
 
-prvi_graf <- ggplot(dolgovi[[1]], aes(x = Država, y = Dolg)) + geom_bar(stat ="identity", mode = "markers")
+prvi_graf <- ggplot(dolgovi[[1]], aes(x = Drzava, y = Dolg)) + geom_bar(stat ="identity", mode = "markers", fill = "blue")
                                                                         
 #plot(prvi_graf)
 
 
 #Stolpični graf ki prikaže države z dolgom več kot 100% v nekem letu
 
-drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), aes(x = Država, y = Dolg)) + geom_bar(stat ="identity", mode = "markers")
+drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), aes(x = Drzava, y = Dolg)) + geom_bar(stat ="identity", mode = "markers", fill = rainbow(9) )
 
 #plot(drugi_graf)
 
@@ -179,16 +178,25 @@ drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), aes(x = Država, y = Dol
 
 #Geometric point graf dolga držav v nekem letu z povprečjem
 
-tretji_graf <- ggplot(dolgovi[[9]], aes(x = Država, y = Dolg)) + geom_point() + geom_hline()
+#povprecje <- sum(dolgovi_2014$Dolg)
 
-#plot(tretji_graf)
+tretji_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg)) + geom_point() + geom_hline()
+
+plot(tretji_graf)
+
+
 
 
 #Graf rasti zadolženosti slovenije od leta 2006 do leta 2014 
 
-četrti_graf <- ggplot(evropa_dolgovi, aes(x = Leto, y = Dolg)) + geom_bar(stat ="identity", mode = "markers")
+#evropa_dolgovi_leta <- data.frame(Leto = 2006:2014, t(evropa_dolgovi_leta))
 
-#View(četrti_graf)
+#View(evropa_dolgovi_leta)
+
+#cetrti_graf <- ggplot(evropa_dolgovi, aes(x = leto, y = SVN)) + geom_bar(stat ="identity", mode = "markers")
+
+
+#plot(četrti_graf)
 
 
 
@@ -199,5 +207,19 @@ tretji_graf <- ggplot(dolgovi[[9]], aes(x = Država, y = Dolg)) + geom_point() +
 #Torej ta graf bo imel za vsako državo prikazan krog svoje barve in 
 # ta krog bo prikazoval dolg in deficit te države v danem letu.
 
+peti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, y = Deficit, color =
+                                               Drzava, size = Dolg-10*Deficit)) + guides(color = guide_legend(ncol = 2)) + geom_point()
+
+#plot(peti_graf)
 
 
+
+#Tukaj primerjam zadolženost evropskih držav z ZDA, UK, Japonsko etc. 
+
+#tabela_3_6 <- tabela_3
+#tabela_3_6 <- rename(tabela_3_6, Dolg=2011)
+#View(tabela_3_6)
+
+#sesti_graf <- ggplot(tabela_3, aes(x = Drzava, y = Dolg)) + geom_bar(stat ="identity", mode = "markers", fill = "blue")
+
+#plot(sesti_graf)
