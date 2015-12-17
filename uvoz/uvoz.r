@@ -163,7 +163,7 @@ names(evropa_deficiti) <- c("2006","2007","2008","2009","2010","2011","2012","20
 
 #Stolpičasti graf dolga evropskih držav v določenem letu
 
-prvi_graf <- ggplot(dolgovi[[1]], aes(x = Drzava, y = Dolg)) + geom_bar(stat ="identity", mode = "markers", fill = "blue")
+prvi_graf <- ggplot(dolgovi[[1]], aes(x = Drzava, y = Dolg, fill = Dolg)) + geom_bar(stat ="identity", mode = "markers")
                                                                         
 #plot(prvi_graf)
 
@@ -182,14 +182,14 @@ drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), aes(x = Drzava, y = Dolg
 
 tretji_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg)) + geom_point() + geom_hline()
 
-plot(tretji_graf)
+#plot(tretji_graf)
 
 
 
 
 #Graf rasti zadolženosti slovenije od leta 2006 do leta 2014 
 
-#evropa_dolgovi_leta <- data.frame(Leto = 2006:2014, t(evropa_dolgovi_leta))
+#evropa_dolgovi_leta <- data.frame(leto = 2006:2014, t(evropa_dolgovi_leta))
 
 #View(evropa_dolgovi_leta)
 
@@ -214,7 +214,7 @@ peti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, y = Deficit,
 
 
 
-#Tukaj primerjam zadolženost evropskih držav z ZDA, UK, Japonsko etc. 
+#Stolpični graf, kjer primerjam zadolženost evropskih držav z ZDA in Japonsko 
 
 #tabela_3_6 <- tabela_3
 #tabela_3_6 <- rename(tabela_3_6, Dolg=2011)
