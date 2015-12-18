@@ -1,10 +1,5 @@
 # 2. faza: Uvoz
-library(ggplot2)
-library(dplyr)
-require(gsubfn)
-require(rvest)
-require(xml2)
-require(ggplot2)
+
 
 
 #HTML UVOZ
@@ -36,6 +31,7 @@ tabela_3 <- tabela[c("Drzava", "2011")]
 #View(tabela_1)
 #View(tabela_2)
 #View(tabela_3)
+
 
 
 #CSV DATOTEKE
@@ -163,7 +159,7 @@ names(evropa_deficiti) <- c("2006","2007","2008","2009","2010","2011","2012","20
 
 #Stolpičasti graf dolga evropskih držav v določenem letu
 
-prvi_graf <- ggplot(dolgovi[[1]], aes(x = Drzava, y = Dolg, fill=Dolg)) + 
+prvi_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg, fill=Dolg)) + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   geom_bar(stat ="identity", mode = "markers") 
                                                                         
@@ -184,8 +180,6 @@ drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100),
 
 povprecje <- sum(dolgovi[[9]]$Dolg)/21
 
-#View(povprecje)
-
 tretji_graf <- ggplot(dolgovi[[9]], 
                       aes(x = Drzava, y = Dolg, color=Drzava,size = Dolg)) + 
   guides(color = guide_legend(ncol = 2)) + geom_point() + 
@@ -197,7 +191,7 @@ tretji_graf <- ggplot(dolgovi[[9]],
 
 #Graf rasti zadolženosti slovenije od leta 2006 do leta 2014 
 
-evropa_dolgovi_leta <- data.frame(Leto = 2006:2014, t(evropa_dolgovi))
+evropa_dolgovi_leta <- data.frame(Leto = as.character(2006:2014), t(evropa_dolgovi))
 evropa_dolgovi_leta <- rename(evropa_dolgovi_leta, Dolg=SVN)
 
 #View(evropa_dolgovi_leta)
@@ -210,7 +204,6 @@ cetrti_graf <- ggplot(evropa_dolgovi_leta,
 #plot(cetrti_graf)
 
 
-
 #Graf s krogi, večji kot je krog večja sta dolg in deficit te države. 
 #Vsaka država je predstavljena s krogom svoje barve. 
 #Na abscisi je prikazan deficit države v nekem letu npr. v letu 2014.
@@ -218,11 +211,14 @@ cetrti_graf <- ggplot(evropa_dolgovi_leta,
 #Torej ta graf bo imel za vsako državo prikazan krog svoje barve in 
 # ta krog bo prikazoval dolg in deficit te države v danem letu.
 
-peti_graf <- ggplot(podatki3 %>% filter(Cas == 2010), aes(x = Dolg, 
-  y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
-  guides(color = guide_legend(ncol = 2)) + geom_point()
+crta <- 0
 
-#plot(peti_graf)
+peti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, 
+  y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
+  guides(color = guide_legend(ncol = 2)) + geom_point() +
+  geom_hline(y=crta)
+
+plot(peti_graf)
 
 
 #Primerjava razvitosti. Isti graf kot zgoraj, vendar bi rad imel možnost
@@ -230,11 +226,11 @@ peti_graf <- ggplot(podatki3 %>% filter(Cas == 2010), aes(x = Dolg,
 #barvo. Na koncu bi se na grafu prikazal size izbranih držav in size
 #neizbranih držav (seveda povprečni size)
 
-peti_graf <- ggplot(podatki3 %>% filter(Cas == 2010), aes(x = Dolg, 
+sesti_graf <- ggplot(podatki3 %>% filter(Cas == 2010), aes(x = Dolg, 
   y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
   guides(color = guide_legend(ncol = 2)) + geom_point()
 
-#plot(peti_graf)
+#plot(sesti_graf)
 
 
 
@@ -245,8 +241,10 @@ tabela_3_6 <- rename(tabela_3_6, Dolg=`2011`)
 tabela_3_6 <- tabela_3_6[-c(11,18,19,20),]
 #View(tabela_3_6)
 
-sesti_graf <- ggplot(tabela_3_6, aes(x = Drzava, y = Dolg, fill = Dolg)) + 
+sedmi_graf <- ggplot(tabela_3_6, aes(x = Drzava, y = Dolg, fill = Dolg)) + 
   geom_bar(stat ="identity", mode = "markers") +
-  scale_fill_continuous(low = "#69b8f6", high = "#142d45")
+  scale_fill_continuous(low = "#69b8f6", high = "#142d45") 
+  
 
-#plot(sesti_graf)
+
+#plot(sedmi_graf)

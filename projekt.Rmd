@@ -8,7 +8,7 @@ output:
       in_header: lib/styles.sty
 ---
 
-```{r setup, echo=FALSE, results='hide', message=FALSE}
+```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
 # in sledimo navodilom v programu.
 #source("fontconfig.r", encoding = "UTF-8")
@@ -33,6 +33,7 @@ Podatke za prvi dve tabeli sem uvozil iz spletne strani OECD. Tam sem izbral sam
 Prva tabela prikazuje dolg evropskih držav, druga deficit teh držav in tretja prikazuje dolg ZDA in Japonske v primerjavi z evropskim.
 
 Povezavi za tabele:
+
 - https://data.oecd.org/gga/general-government-debt.htm
 - https://en.wikipedia.org/wiki/National_debt_of_the_United_States
 
@@ -43,6 +44,7 @@ Spodaj so po posameznih tabelah prikazani stolpci
 
 
 Prva tabela:
+
 - LOCATION (ime države)
 - INDICATOR (dolg države)
 - SUBJECT 
@@ -52,7 +54,8 @@ Prva tabela:
 - VALUE (višina zadolženosti)
 - Flag Codes
 
-Druga tabela: 
+Druga tabela:
+
 - LOCATION (ime države)
 - INDICATOR (deficit države)
 - SUBJECT 
@@ -63,6 +66,7 @@ Druga tabela:
 - Flag Codes
 
 Tretja tabela:
+
 - Entity (ime države)
 - 2007 (pokaže višino zadolženosti države leta 2007)
 - 2010 (pokaže višino zadolženosti države leta 2010)
@@ -73,45 +77,14 @@ V prvih dveh tabelah sem nepotrebne stolpce izbrisal in preostalim stolpcem spre
 Tretja tabela, ki je bila uvožena v HTML obliki vsebuje podatke zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. Naredil sem 3 podtabele, kjer vsaka prikazuje zadolženost držav v letih 2007, 2010 in 2011, vendar sem odstranil vrstice z odvečnimi državami, tako da so ostale samo še evropske države, ZDA in Japonska. 
 
 
-
+```{r graf1, echo=FALSE, fig.cap='Ta graf prikazuje BDP'}
+print(cetrti_graf)
+```
 
 
 ***
 
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, echo=FALSE}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
-```
 
-Slika \ref{fig:zemljevid} prikazuje povprečno velikost družine za vsako občino.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-n <- 100
-barve <- topo.colors(n)[1+(n-1)*(druzine$povprecje-min.povprecje)/(max.povprecje-min.povprecje)]
-plot(zemljevid, col = barve)
-title("Povprečno število otrok v družini")
-```
-
-***
-
-# Napredna analiza podatkov
-
-```{r analiza, echo=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
-
-Slika \ref{fig:graf} prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-plot(obcine[[1]], obcine[[4]],
-     main = "Število naselij glede na površino občine",
-     xlab = expression("Površina (km"^2 * ")"),
-     ylab = "Št. naselij",
-     col = barve[obcine[[7]]],
-     pch = 18)
-legend("topright", legend = names(barve), col = barve,
-       pch = 18, cex = 0.5, bg = "white")
-```
-
-***
