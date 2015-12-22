@@ -303,4 +303,4 @@ sedmi_graf <- ggplot(tabela_3_6, aes(x = Drzava, y = Dolg, fill = Dolg)) +
   
 
 
-plot(sedmi_graf)
+#plot(sedmi_graf)
