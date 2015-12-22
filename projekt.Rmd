@@ -38,7 +38,6 @@ Povezavi za tabele:
 - https://data.oecd.org/gga/general-government-debt.htm
 - https://en.wikipedia.org/wiki/National_debt_of_the_United_States
 
-
 ***
 
 
@@ -77,76 +76,76 @@ Tretja tabela:
 
 V prvih dveh tabelah sem nepotrebne stolpce izbrisal in preostalim stolpcem spremenil imena v slovenski jezik. Prav tako sem ustvaril še veliko podtabel, ki prikazujejo zadolženost/deficit držav po posameznih letih. Za vsako leto od 2006 do 2014 sem naredil posebno podtabelo, ki prikazuje stanje držav glede na določeno leto. Prav tako sem iz danih podatkov ustvaril tabeli, ki imata v prvem stolpcu ime države, potem pa vsi naslednji stolpci prikazujejo dolg/deficit po sveh letih po vrsti od 2006 do 2014. 
 
-Tretja tabela, ki je bila uvožena v HTML obliki, vsebuje podatke o zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. Naredil sem 3 podtabele, kjer vsaka prikazuje zadolženost držav v letih 2007, 2010 in 2011, vendar sem odstranil vrstice z odvečnimi državami, tako da so ostale samo še evropske države, ZDA in Japonska.
-
-
-Na teh dveh grafih lahko tako vidimo kako je zadolženost evropksih držav leta 2006 narasla do leta 2014.
+Na teh dveh grafih lahko tako vidimo kako je zadolženost evropskih držav leta 2006 narasla do leta 2014.
 
 ```{r graf1, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2006'}
-print(prvi1_graf)
-```
-
-```{r graf2, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014'}
 print(prvi_graf)
 ```
 
-Ta graf prav tako prikazuje zadolženost evropskih držav leta 2014, vendar sem tukaj vsako državo aproksimiral s piko in njena velikost tudi ponazarja dolg države. Prav tako je na grafu z rdečo črto označena povprečna zadolženost. 
+```{r graf2, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014'}
+print(drugi_graf)
+```
+
+Ta graf prav tako prikazuje zadolženost evropskih držav leta 2014, vendar sem tukaj vsako državo aproksimiral s piko in njena velikost ponazarja dolg države. Prav tako je na grafu z rdečo črto označena povprečna zadolženost. 
 
 ```{r graf3, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014'}
 print(tretji_graf)
 ```
 
-Podtabela podatki2 kaže deficite držav evropske unije skozi leta.
-Na naslednjih dveh grafih lahko tako vidimo kakšen deficit so imele države v letu 2006 in 2014. Opazimo lahko, da so države v letu 2014 veliko težje imele uravnotežen proračun. 
+
+Na naslednjih dveh grafih lahko vidimo kakšen deficit so imele države v letu 2006 in 2014. Opazimo lahko, da so države v letu 2014 imele večje težave pri doseganju uravnoteženega proračuna. 
 
 ```{r graf4, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2006'}
-print(def1_graf)
-```
-
-```{r graf5, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2014'}
-print(def9_graf)
-```
-
-Kot vidimo sta zadolženost držav in število tistih, ki so imele primankljaj skozi čas naraščala. Vendar pa zaskrbljujoče tudi narašča število držav z dolgom, ki presega 100% BDP. Če sta bili leta 2006 samo dve taki državi, jih je bilo leta 2014 že devet, kar se vidi iz teh dveh grafov. 
-
-```{r graf6, echo=FALSE, warning=FALSE, fig.cap='Države z dolgom večjim od 100% BDP leta 2006'}
-print(drugi1_graf)
-```
-
-```{r graf7, echo=FALSE, warning=FALSE, fig.cap='Države z dolgom večjim od 100% BDP leta 2014'}
-print(drugi_graf)
-```
-
-Sedaj si poglejmo kako je naraščal dolg posameznih držav skozi čas. Še posebej sem pod drobnogled vzel Slovenijo. Podatki kažejo, da smo se odrezali precej slabo, saj se je naša zadolženost v 9 letih povečala za 60% in malo je držav, ki bi se zadolževale s tako hitrostjo. To nas postavi vštric z državami kot so Portugalska, Grčija, Irska in Velika Britanija, od katerih so prve tri znane kot bolnice evrope. Prav zato je sedaj toliko bolj razumljivo zakaj so bile pred leti napovedi, da bo v našo državo prišla trojka, saj smo se zadolževali z rekordno hitrostjo. 
-Prvi graf kaže hitrost zadolževanja Slovenije, medtem ko drugi graf kaže hitrost zadolževanja Madžarske, kar je hitrost s katero se je zadolževala večina drugih evropskih držav. 
-
-```{r graf8, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolževanja Slovenije'}
 print(cetrti_graf)
 ```
 
-```{r graf9, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolževanja Madžarske'}
-print(cetrti1_graf)
+```{r graf5, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2014'}
+print(peti_graf)
 ```
 
-Analizo evroobmočja sem zaključil z grafom, ki ima na abscisni osi podano zadolženost države, na ordinati pa deficit tistega leta. Vsaka država je aproksimirana s svojo točko, velikost točke pa je določena z enačbo size = Dolg-10*Deficit. Večje kot je število, slabše se je ta država odrezala. Na grafu sem s črno črto označil mejo uravnoteženega proračuna, torej takrat ko ima država proračunski presežek in z rdečo črto Maastrichtsko določilo, da deficit države ne sme presegati 3% BDP-ja. 
+Kot vidimo sta zadolženost držav in število tistih, ki so imele primankljaj skozi čas naraščala. Vendar pa zaskrbljujoče narašča tudi število držav z dolgom, ki presega 100% BDP. Če sta bili leta 2006 samo dve taki državi, jih je bilo leta 2014 že devet, kar se vidi iz teh dveh grafov. 
+
+```{r graf6, echo=FALSE, warning=FALSE, fig.cap='Države z dolgom večjim od 100% BDP leta 2006'}
+print(sesti_graf)
+```
+
+```{r graf7, echo=FALSE, warning=FALSE, fig.cap='Države z dolgom večjim od 100% BDP leta 2014'}
+print(sedmi_graf)
+```
+
+Sedaj si poglejmo kako je naraščal dolg posameznih držav skozi čas. Še posebej sem pod drobnogled vzel Slovenijo. Podatki kažejo, da smo se odrezali precej slabo, saj se je naša zadolženost v 9 letih povečala za 60% in malo je držav, ki bi se zadolževale s tako hitrostjo. To nas postavi vštric z državami kot so Portugalska, Grčija, Irska in Velika Britanija, od katerih so prve tri znane kot bolnice evrope. Prav zato je sedaj toliko bolj razumljivo zakaj so bile pred leti napovedi, da bo v našo državo prišla trojka, saj smo se zadolževali z rekordno hitrostjo. 
+
+Prvi graf kaže hitrost zadolževanja Slovenije, medtem ko drugi graf kaže hitrost zadolževanja Madžarske, kar je hitrost s katero se je zadolževala večina drugih evropskih držav. 
+
+```{r graf8, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolževanja Slovenije'}
+print(osmi_graf)
+```
+
+```{r graf9, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolževanja Madžarske'}
+print(deveti_graf)
+```
+
+Analizo evroobmočja sem zaključil z grafom, ki ima na abscisni osi podano zadolženost države, na ordinati pa deficit tistega leta. Vsaka država je aproksimirana s svojo točko, velikost točke pa je določena z enačbo `size = Dolg-10*Deficit`. Večje kot je število, slabše se je ta država odrezala. Na grafu sem s črno črto označil mejo uravnoteženega proračuna, torej takrat ko ima država proračunski presežek in z rdečo črto Maastrichtsko določilo, da deficit države ne sme pasti pod -3% BDP letno.
+
 Prvi graf prikazuje razporeditev držav v leta 2006, drugi pa v letu 2014. Zanimivo je to, da se vidi korelacija med zadolženostjo in primankljajem. Države so razporejene približno v diagonalni črti. Zdi se, da večji javni dolg pomeni tudi večji deficit.  
 
 
 ```{r graf10, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih držav leta 2006'}
-print(peti_graf)
+print(deseti_graf)
 ```
 
 ```{r graf11, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih držav leta 2014'}
-print(sesti_graf)
+print(enajsti_graf)
 ```
 
 
-Za na konec sem se odločil primerjati zadolženost evropksih držav z Japonsko in ZDA. Zadnji dve državi imata vse ključne parametre zelo podobne evropi, torej stopnja razvitosti, tehnologija, življenski standard itd. Vendar ko primerjamo njuni stopnji zadolženosti vidimo, da je Japonska najbolj zadolžena od vseh, za neverjetnih 204% BDP, medtem ko je ZDA bolj zadolžena od večine evropskih držav. 
+Tretja tabela, ki je bila uvožena v HTML obliki, vsebuje podatke o zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. Naredil sem 3 podtabele, kjer vsaka prikazuje zadolženost držav v letih 2007, 2010 in 2011, vendar sem odstranil vrstice z odvečnimi državami, tako da so ostale samo še evropske države, ZDA in Japonska. Zadnji dve državi imata vse ključne parametre zelo podobne evropi, torej stopnja razvitosti, tehnologija, življenski standard... Vendar ko primerjamo njuni stopnji zadolženosti vidimo, da je Japonska najbolj zadolžena od vseh, za neverjetnih 204% BDP, medtem ko je ZDA prav tako bolj zadolžena od večine evropskih držav. 
+
 Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 
 
-```{r graf12, echo=FALSE, warning=FALSE, fig.cap='Zadolženost evropskih drav, Japonske in ZDA leta 2011'}
-print(sedmi_graf)
+```{r graf12, echo=FALSE, warning=FALSE, fig.cap='Zadolženost evropskih držav, Japonske in ZDA leta 2011'}
+print(dvanajsti_graf)
 ```
 
 ***
