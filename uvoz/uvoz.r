@@ -270,8 +270,8 @@ crta1 <- -3
 peti_graf <- ggplot(podatki3 %>% filter(Cas == 2006), aes(x = Dolg, 
   y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
   guides(color = guide_legend(ncol = 2)) + geom_point() +
-  geom_hline(y=crta) + 
-  geom_hline(y=crta1, colour="red") 
+  geom_hline(yintercept=crta) + 
+  geom_hline(yintercept=crta1, colour="red") 
   
 
 #plot(peti_graf)
@@ -281,8 +281,8 @@ peti_graf <- ggplot(podatki3 %>% filter(Cas == 2006), aes(x = Dolg,
 sesti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, 
   y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
   guides(color = guide_legend(ncol = 2)) + geom_point() +
-  geom_hline(y=crta) + 
-  geom_hline(y=crta1, colour="red") 
+  geom_hline(yintercept=crta) + 
+  geom_hline(yintercept=crta1, colour="red") 
 
 
 #plot(sesti_graf)
