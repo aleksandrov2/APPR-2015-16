@@ -72,13 +72,17 @@ Tretja tabela:
 - 2010 (pokaže višino zadolženosti države leta 2010)
 - 2011 (pokaže višino zadolženosti države leta 2011)
 
+```{r graf3, echo=FALSE, fig.cap='Ta graf prikazuje BDP'}
+print(tretji_graf)
+```
+
 V prvih dveh tabelah sem nepotrebne stolpce izbrisal in preostalim stolpcem spremenil imena v slovenskem jeziku. Prav tako sem ustvaril še veliko podtabel, ki prikazujejo zadolženost/deficit držav po posameznih letih. Za vsako leto od 2006 do 2014 sem naredil posebno podtabelo, ki prikazuje stanje držav glede na določeno leto. Prav tako sem iz danih podatkov ustvaril tabeli, ki imata v prvem stolpcu ime države, potem pa vsi naslednji stolpci prikazujejo dolg/deficit po sveh letih po vrsti od 2006 do 2014. 
 
 Tretja tabela, ki je bila uvožena v HTML obliki vsebuje podatke zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. Naredil sem 3 podtabele, kjer vsaka prikazuje zadolženost držav v letih 2007, 2010 in 2011, vendar sem odstranil vrstice z odvečnimi državami, tako da so ostale samo še evropske države, ZDA in Japonska. 
 
 
 ```{r graf1, echo=FALSE, fig.cap='Ta graf prikazuje BDP'}
-print(cetrti_graf)
+print(prvi_graf)
 ```
 
 

@@ -1,6 +1,13 @@
 # 2. faza: Uvoz
 
+library(knitr)
 
+library(ggplot2)
+library(dplyr)
+require(gsubfn)
+require(rvest)
+require(xml2)
+require(ggplot2)
 
 #HTML UVOZ
 #link do wikipedije kjer sem dobil podatke
@@ -163,7 +170,7 @@ prvi_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg, fill=Dolg)) +
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   geom_bar(stat ="identity", mode = "markers") 
                                                                         
-#plot(prvi_graf)
+plot(prvi_graf)
 
 
 #Stolpični graf ki prikaže države z dolgom več kot 100% v nekem letu
@@ -218,7 +225,7 @@ peti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg,
   guides(color = guide_legend(ncol = 2)) + geom_point() +
   geom_hline(y=crta)
 
-plot(peti_graf)
+#plot(peti_graf)
 
 
 #Primerjava razvitosti. Isti graf kot zgoraj, vendar bi rad imel možnost
