@@ -166,50 +166,22 @@ names(evropa_deficiti) <- c("2006","2007","2008","2009","2010","2011","2012","20
 
 #Stolpičasti graf dolga evropskih držav v določenem letu
 
-prvi_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg, fill=Dolg)) + 
+
+prvi_graf <- ggplot(dolgovi[[1]], aes(x = Drzava, y = Dolg, fill=Dolg)) + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   geom_bar(stat ="identity") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
-                                                                        
+
 #plot(prvi_graf)
 
 
-prvi1_graf <- ggplot(dolgovi[[1]], aes(x = Drzava, y = Dolg, fill=Dolg)) + 
+drugi_graf <- ggplot(dolgovi[[9]], aes(x = Drzava, y = Dolg, fill=Dolg)) + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   geom_bar(stat ="identity") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
 
-#plot(prvi1_graf)
-
-
-#Tukaj si lahko pogledamo deficite držav v evroobmočju.
-
-def1_graf <- ggplot(deficiti[[1]], aes(x = Drzava, y = Deficit, fill=Deficit)) + 
-  geom_bar(stat ="identity") + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
-
-#plot(def1_graf)
-
-def9_graf <- ggplot(deficiti[[9]], aes(x = Drzava, y = Deficit, fill=Deficit)) + 
-  geom_bar(stat ="identity") + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
-
-#plot(def9_graf)
-
-
-#Stolpični graf ki prikaže države z dolgom več kot 100% v nekem letu
-
-drugi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), 
-                     aes(x = Drzava, y = Dolg)) + 
-  geom_bar(stat ="identity", fill = rainbow(9) )
 
 #plot(drugi_graf)
-
-drugi1_graf <- ggplot(dolgovi[[1]] %>% filter(Dolg>100), 
-                     aes(x = Drzava, y = Dolg)) + 
-  geom_bar(stat ="identity", fill = rainbow(2) )
-
-#plot(drugi1_graf)
 
 
 #Geometric point graf dolga držav v nekem letu z povprečjem
@@ -217,12 +189,44 @@ drugi1_graf <- ggplot(dolgovi[[1]] %>% filter(Dolg>100),
 povprecje <- sum(dolgovi[[9]]$Dolg)/21
 
 tretji_graf <- ggplot(dolgovi[[9]], 
-                      aes(x = Drzava, y = Dolg, color=Drzava,size = Dolg)) + 
+                     aes(x = Drzava, y = Dolg, color=Drzava,size = Dolg)) + 
   guides(color = guide_legend(ncol = 2)) + geom_point() + 
   geom_hline(yintercept=povprecje, colour="red") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
 
 #plot(tretji_graf)
+
+
+#Tukaj si lahko pogledamo deficite držav v evroobmočju.
+
+cetrti_graf <- ggplot(deficiti[[1]], aes(x = Drzava, y = Deficit, fill=Deficit)) + 
+  geom_bar(stat ="identity") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+#plot(cetrti_graf)
+
+peti_graf <- ggplot(deficiti[[9]], aes(x = Drzava, y = Deficit, fill=Deficit)) + 
+  geom_bar(stat ="identity") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+#plot(peti_graf)
+
+
+#Stolpični graf ki prikaže države z dolgom več kot 100% v nekem letu
+
+
+sesti_graf <- ggplot(dolgovi[[1]] %>% filter(Dolg>100), 
+                     aes(x = Drzava, y = Dolg)) + 
+  geom_bar(stat ="identity", fill = rainbow(2) )
+
+#plot(sesti_graf)
+
+
+sedmi_graf <- ggplot(dolgovi[[9]] %>% filter(Dolg>100), 
+                    aes(x = Drzava, y = Dolg)) + 
+  geom_bar(stat ="identity", fill = rainbow(9) )
+
+#plot(sedmi_graf)
 
 
 
@@ -233,12 +237,12 @@ evropa_dolgovi_leta <- rename(evropa_dolgovi_leta, Dolg=SVN)
 
 #View(evropa_dolgovi_leta)
 
-cetrti_graf <- ggplot(evropa_dolgovi_leta, 
+osmi_graf <- ggplot(evropa_dolgovi_leta, 
                       aes(x = Leto, y = Dolg, fill=Dolg)) +
   geom_bar(stat ="identity") + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45")
 
-#plot(cetrti_graf)
+#plot(osmi_graf)
 
 
 evropa_dolgovi2_leta <- data.frame(Leto = as.character(2006:2014), t(evropa_dolgovi))
@@ -246,12 +250,12 @@ evropa_dolgovi2_leta <- rename(evropa_dolgovi_leta, Dolg=HUN)
 
 #View(evropa_dolgovi2_leta)
 
-cetrti1_graf <- ggplot(evropa_dolgovi2_leta, 
+deveti_graf <- ggplot(evropa_dolgovi2_leta, 
                       aes(x = Leto, y = Dolg, fill=Dolg)) +
   geom_bar(stat ="identity") + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45")
 
-#plot(cetrti1_graf)
+#plot(deveti_graf)
 
 
 
@@ -267,25 +271,25 @@ crta <- 0
 crta1 <- -3
 
 
-peti_graf <- ggplot(podatki3 %>% filter(Cas == 2006), aes(x = Dolg, 
+deseti_graf <- ggplot(podatki3 %>% filter(Cas == 2006), aes(x = Dolg, 
   y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
   guides(color = guide_legend(ncol = 2)) + geom_point() +
   geom_hline(yintercept=crta) + 
   geom_hline(yintercept=crta1, colour="red") 
   
 
-#plot(peti_graf)
+#plot(deseti_graf)
 
 
 
-sesti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, 
+enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, 
   y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
   guides(color = guide_legend(ncol = 2)) + geom_point() +
   geom_hline(yintercept=crta) + 
   geom_hline(yintercept=crta1, colour="red") 
 
 
-#plot(sesti_graf)
+#plot(enajsti_graf)
 
 
 
@@ -294,13 +298,13 @@ sesti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg,
 tabela_3_6 <- tabela_3
 tabela_3_6 <- rename(tabela_3_6, Dolg=`2011`)
 tabela_3_6 <- tabela_3_6[-c(18,19,20),]
+
 #View(tabela_3_6)
 
-sedmi_graf <- ggplot(tabela_3_6, aes(x = Drzava, y = Dolg, fill = Dolg)) + 
+dvanajsti_graf <- ggplot(tabela_3_6, aes(x = Drzava, y = Dolg, fill = Dolg)) + 
   geom_bar(stat ="identity") +
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
   
 
-
-#plot(sedmi_graf)
+#plot(dvanajsti_graf)
