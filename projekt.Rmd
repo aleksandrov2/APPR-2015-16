@@ -19,10 +19,10 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Izbral sem si temo `Dolgovi in primankljaji držav v Evropski uniji`. V svojem poročilu bom analiziral stopnjo zadolženosti držav evropske unije in njihove deficite v letih od 2006 do 2014. Preveril bom kako je naraščala zadolženost držav v evropi in poskusil oceniti vpliv krize na hitrost zadolževanja. Primerjal bom posamezne države evropske unije in poskusil ugotoviti ali so problematične vse ali obstaja samo neka skupina članic, ki ne vzdržujejo proračunske discipline. Ker je zadnja leta veliko govora tudi o Maastrichskih kriterijih in o tem kako imamo prevelike stopnje zadolženosti, bom na koncu tudi primerjal evropo z drugima dvema najbolj razvitima državama Japonsko in ZDA.
+Izbral sem si temo `Dolgovi in primankljaji držav v Evropski uniji`. V svojem poročilu bom analiziral stopnjo zadolženosti držav evropske unije in njihove deficite v letih od 2006 do 2014. Preveril bom kako je naraščala zadolženost držav v evropi in ali morda obstaja kakšna korelacija med dolgom in deficitom. Primerjal bom posamezne države evropske unije in poskusil ugotoviti ali so problematične vse ali obstaja samo neka skupina članic, ki ne vzdržujejo proračunske discipline. Ker je zadnja leta veliko govora tudi o Maastrichskih kriterijih in o tem kako imamo prevelike stopnje zadolženosti, bom na koncu primerjal evropo z drugima dvema najbolj razvitima državama Japonsko in ZDA.
 Nasploh je to zelo pomembna tema, saj bodo odločitve politikov in ekonomistov, kakšna naj bo naša strategija pri zadolževanju, uplivale na vsakdanje življenje vseh nas. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
 
-
+***
 
 # Obdelava, uvoz in čiščenje podatkov
 
@@ -37,8 +37,6 @@ Povezavi za tabele:
 
 - https://data.oecd.org/gga/general-government-debt.htm
 - https://en.wikipedia.org/wiki/National_debt_of_the_United_States
-
-***
 
 
 
@@ -75,35 +73,40 @@ Tretja tabela:
 - 2011 (pokaže višino zadolženosti države leta 2011)
 
 
-V prvih dveh tabelah sem nepotrebne stolpce izbrisal in preostalim stolpcem spremenil imena v slovenski jezik. Prav tako sem ustvaril še veliko podtabel, ki prikazujejo zadolženost/deficit držav po posameznih letih. Za vsako leto od 2006 do 2014 sem naredil posebno podtabelo, ki prikazuje stanje držav glede na določeno leto. Prav tako sem iz danih podatkov ustvaril tabeli, ki imata v prvem stolpcu ime države, potem pa vsi naslednji stolpci prikazujejo dolg/deficit po sveh letih po vrsti od 2006 do 2014. 
+V prvih dveh tabelah sem nepotrebne stolpce izbrisal in preostalim stolpcem spremenil imena v slovenski jezik. Dobil sem tabeli, ki imata na začetku stolpec `Drzava`, potem sledi stolpec `Cas` in na koncu ima prva tabela stolpec `Dolg`, druga pa `Deficit`. 
 
 
 ```{r podatki1, echo=FALSE}
 kable(head(podatki1))
 ```
 
-```{r podatki2, echo=FALSE}
-kable(head(podatki2))
-```
+Tretja tabela, ki je bila uvožena v HTML obliki, vsebuje podatke o zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. Naredil sem 3 podtabele, kjer vsaka prikazuje zadolženost držav v letih 2007, 2010 in 2011, vendar sem odstranil vrstice z odvečnimi državami, tako da so ostale samo še evropske države, ZDA in Japonska.
+
 
 ```{r tabela_3, echo=FALSE}
 kable(head(tabela_3))
 ```
 
+Iz prvih dveh tabel sem ustvaril številne druge podtabele, kjer je po posameznih državah prikazan dolg/deficit v določenem letu.
 
 ```{r dolgovi_2014, echo=FALSE}
 kable(head(dolgovi_2014))
 ```
 
-```{r deficiti_2014, echo=FALSE}
-kable(head(deficiti_2014))
-```
+Ker je eden izmed mojih ciljev tudi analizirati hitrost naraščanja javnega dolga v evropskih državah, sem ustvaril dve podtabeli, ki prikazujeta dolg/deficit od leta 2006 do 2014.
+
 
 ```{r evropa_dolgovi, echo=FALSE}
 kable(head(evropa_dolgovi))
 ```
-```{r evropa_deficiti, echo=FALSE}
-kable(head(evropa_deficiti))
+
+
+***
+
+# Analiza in vizualizacija podatkov
+
+```{r vizualizacija, echo=FALSE, message=FALSE}
+source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
 
@@ -170,7 +173,7 @@ print(enajsti_graf)
 ```
 
 
-Tretja tabela, ki je bila uvožena v HTML obliki, vsebuje podatke o zadolženosti ZDA, Japonske, Velike Britanije, večjih evropskih držav in povprečja EU. Naredil sem 3 podtabele, kjer vsaka prikazuje zadolženost držav v letih 2007, 2010 in 2011, vendar sem odstranil vrstice z odvečnimi državami, tako da so ostale samo še evropske države, ZDA in Japonska. Zadnji dve državi imata vse ključne parametre zelo podobne evropi, torej stopnja razvitosti, tehnologija, življenski standard... Vendar ko primerjamo njuni stopnji zadolženosti vidimo, da je Japonska najbolj zadolžena od vseh, za neverjetnih 204% BDP, medtem ko je ZDA prav tako bolj zadolžena od večine evropskih držav. 
+ Zadnji dve državi imata vse ključne parametre zelo podobne evropi, torej stopnja razvitosti, tehnologija, življenski standard... Vendar ko primerjamo njuni stopnji zadolženosti vidimo, da je Japonska najbolj zadolžena od vseh, za neverjetnih 204% BDP, medtem ko je ZDA prav tako bolj zadolžena od večine evropskih držav. 
 
 Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 
@@ -179,10 +182,9 @@ Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 print(dvanajsti_graf)
 ```
 
+
+
 ***
-
-
-# Analiza in vizualizacija podatkov
 
 
 
