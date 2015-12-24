@@ -182,9 +182,13 @@ Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 print(dvanajsti_graf)
 ```
 
-
-
 ***
+
+# Napredna analiza podatkov
+
+```{r analiza, echo=FALSE, message=FALSE}
+source("analiza/analiza.r", encoding = "UTF-8")
+```
 
 
 
