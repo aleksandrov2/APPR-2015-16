@@ -158,11 +158,11 @@ Prvi graf prikazuje razporeditev držav v leta 2006, drugi pa v letu 2014. Zanim
 
 
 ```{r graf10, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih drzav leta 2006', fig.align='center'}
-print(deseti_graf)
+print(deseti_graf+ geom_smooth(method = "lm"))
 ```
 
 ```{r graf11, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih drzav leta 2014', fig.align='center'}
-print(enajsti_graf)
+print(enajsti_graf+ geom_smooth(method = "lm"))
 ```
 
 
