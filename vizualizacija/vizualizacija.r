@@ -128,6 +128,7 @@ deseti_graf <- ggplot(podatki3 %>% filter(Cas == 2006), aes(x = Dolg,
   geom_hline(yintercept=crta) + 
   geom_hline(yintercept=crta1, colour="red") 
   
+deseti_graf + geom_smooth(method = "lm")
 
 #plot(deseti_graf)
 
