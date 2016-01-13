@@ -122,29 +122,36 @@ crta <- 0
 crta1 <- -3
 
 
-deseti_graf <- ggplot(podatki3 %>% filter(Cas == 2006), aes(x = Dolg, 
-  y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
-  guides(color = guide_legend(ncol = 2)) + geom_point() +
+deseti_graf <- ggplot(podatki3 %>% filter(Cas == 2006),
+                      aes(x = Dolg, y = Deficit)) + 
+  guides(color = guide_legend(ncol = 2)) +
+  geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
   geom_hline(yintercept=crta) + 
   geom_hline(yintercept=crta1, colour="red") 
-  
-deseti_graf + geom_smooth(method = "lm")
 
-#plot(deseti_graf)
+
+#plot(deseti_graf+ geom_smooth(method = "lm"))
 
 napoved <- lm(data = podatki3 %>% filter(Cas == 2006), Deficit ~ Dolg)
 napoved
-predict(napoved, data.frame(Dolg=seq(0, 250, 25)))
+predict(napoved, data.frame(Dolg=seq(0, 250, 25))) 
 
 
-enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, 
-  y = Deficit, color =Drzava, size = Dolg-10*Deficit)) + 
-  guides(color = guide_legend(ncol = 2)) + geom_point() +
+
+enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014),
+                      aes(x = Dolg, y = Deficit)) + 
+  guides(color = guide_legend(ncol = 2)) +
+  geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
   geom_hline(yintercept=crta) + 
   geom_hline(yintercept=crta1, colour="red") 
 
 
-#plot(enajsti_graf)
+#plot(enajsti_graf+ geom_smooth(method = "lm")) 
+
+
+napoved2 <- lm(data = podatki3 %>% filter(Cas == 2014), Deficit ~ Dolg)
+napoved2
+predict(napoved2, data.frame(Dolg=seq(0, 250, 25)))
 
 napoved2 <- lm(data = podatki3 %>% filter(Cas == 2014), Deficit ~ Dolg)
 napoved2
