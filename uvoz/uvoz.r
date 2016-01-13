@@ -17,8 +17,6 @@ library(maptools)
 link2 <- "http://www.tradingeconomics.com/country-list/government-debt-to-gdp"
 
 stran2 <- html_session(link2) %>% read_html()
-stran2 <- html_session(link2) %>% read_html()
-stran2 <- html_session(link2) %>% read_html()
 tabela2 <- stran2 %>%
   html_nodes(xpath="//table[@class='table table-condensed table-hover']") %>%
   .[[2]] %>% html_table(fill = TRUE)
