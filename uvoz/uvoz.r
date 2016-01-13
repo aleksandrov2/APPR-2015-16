@@ -12,6 +12,16 @@ library(sp)
 library(maptools)
 
 #HTML UVOZ
+
+#link do spletne strani kjer sem dobil podatke o zadolženosti državah sveta
+link2 <- "http://www.tradingeconomics.com/country-list/government-debt-to-gdp"
+
+stran2 <- html_session(link2) %>% read_html()
+tabela2 <- stran2 %>%
+  html_node( ) %>%   #tukaj ne vem kako naj najdem tabelo
+  html_table()
+
+
 #link do wikipedije kjer sem dobil podatke
 link <- "https://en.wikipedia.org/wiki/National_debt_of_the_United_States"
 
