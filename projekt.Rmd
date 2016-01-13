@@ -105,38 +105,38 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 Na teh dveh grafih lahko tako vidimo kako je zadolženost evropskih držav leta 2006 narasla do leta 2014.
 
-```{r graf1, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2006'}
+```{r graf1, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2006', fig.align='center'}
 print(prvi_graf)
 ```
 
-```{r graf2, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014'}
+```{r graf2, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014', fig.align='center'}
 print(drugi_graf)
 ```
 
 Ta graf prav tako prikazuje zadolženost evropskih držav leta 2014, vendar sem tukaj vsako državo aproksimiral s piko in njena velikost ponazarja dolg države. Prav tako je na grafu z rdečo črto označena povprečna zadolženost. 
 
-```{r graf3, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014'}
+```{r graf3, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014', fig.align='center'}
 print(tretji_graf)
 ```
 
 
 Na naslednjih dveh grafih lahko vidimo kakšen deficit so imele države v letu 2006 in 2014. Opazimo lahko, da so države v letu 2014 imele večje težave pri doseganju uravnoteženega proračuna. 
 
-```{r graf4, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2006'}
+```{r graf4, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2006', fig.align='center'}
 print(cetrti_graf)
 ```
 
-```{r graf5, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2014'}
+```{r graf5, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2014', fig.align='center'}
 print(peti_graf)
 ```
 
 Kot vidimo sta zadolženost držav in število tistih, ki so imele primankljaj skozi čas naraščala. Vendar pa zaskrbljujoče narašča tudi število držav z dolgom, ki presega 100% BDP. Če sta bili leta 2006 samo dve taki državi, jih je bilo leta 2014 že devet, kar se vidi iz teh dveh grafov. 
 
-```{r graf6, echo=FALSE, warning=FALSE, fig.cap='Države z dolgom večjim od 100% BDP leta 2006'}
+```{r graf6, echo=FALSE, warning=FALSE, fig.cap='Drzave z dolgom vecjim od 100% BDP leta 2006', fig.align='center'}
 print(sesti_graf)
 ```
 
-```{r graf7, echo=FALSE, warning=FALSE, fig.cap='Države z dolgom večjim od 100% BDP leta 2014'}
+```{r graf7, echo=FALSE, warning=FALSE, fig.cap='Drzave z dolgom vecjim od 100% BDP leta 2014', fig.align='center'}
 print(sedmi_graf)
 ```
 
@@ -144,11 +144,11 @@ Sedaj si poglejmo kako je naraščal dolg posameznih držav skozi čas. Še pose
 
 Prvi graf kaže hitrost zadolževanja Slovenije, medtem ko drugi graf kaže hitrost zadolževanja Madžarske, kar je hitrost s katero se je zadolževala večina drugih evropskih držav. 
 
-```{r graf8, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolževanja Slovenije'}
+```{r graf8, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolzevanja Slovenije', fig.align='center'}
 print(osmi_graf)
 ```
 
-```{r graf9, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolževanja Madžarske'}
+```{r graf9, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolževanja Madzarske', fig.align='center'}
 print(deveti_graf)
 ```
 
@@ -157,11 +157,11 @@ Analizo evroobmočja sem zaključil z grafom, ki ima na abscisni osi podano zado
 Prvi graf prikazuje razporeditev držav v leta 2006, drugi pa v letu 2014. Zanimivo je to, da se vidi korelacija med zadolženostjo in primankljajem. Države so razporejene približno v diagonalni črti. Zdi se, da večji javni dolg pomeni tudi večji deficit.  
 
 
-```{r graf10, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih držav leta 2006'}
+```{r graf10, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih drzav leta 2006', fig.align='center'}
 print(deseti_graf)
 ```
 
-```{r graf11, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih držav leta 2014'}
+```{r graf11, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih drzav leta 2014', fig.align='center'}
 print(enajsti_graf)
 ```
 
@@ -171,10 +171,15 @@ print(enajsti_graf)
 Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 
 
-```{r graf12, echo=FALSE, warning=FALSE, fig.cap='Zadolženost evropskih držav, Japonske in ZDA leta 2011'}
+```{r graf12, echo=FALSE, warning=FALSE, fig.cap='Zadolzenost evropskih drzav, Japonske in ZDA leta 2011', fig.align='center'}
 print(dvanajsti_graf)
 ```
 
+
+
+```{r zem1, echo=FALSE, warning=FALSE, fig.cap='Zadolzenost evropskih drzav leta 2014', fig.align='center'}
+print(zem1)
+```
 
 
 ***

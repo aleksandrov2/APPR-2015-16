@@ -8,6 +8,8 @@ require(gsubfn)
 require(rvest)
 require(xml2)
 require(ggplot2)
+library(sp)
+library(maptools)
 
 #HTML UVOZ
 #link do wikipedije kjer sem dobil podatke
@@ -37,7 +39,7 @@ tabela_3 <- tabela[c("Drzava", "2011")]
 
 #View(tabela_1)
 #View(tabela_2)
-#View(tabela_3)
+View(tabela_3)
 
 
 

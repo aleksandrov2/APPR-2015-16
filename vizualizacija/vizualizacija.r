@@ -8,7 +8,8 @@ require(gsubfn)
 require(rvest)
 require(xml2)
 require(ggplot2)
-
+library(sp)
+library(maptools)
 
 
 #GRAFI
@@ -160,6 +161,12 @@ dvanajsti_graf <- ggplot(tabela_3_6, aes(x = Drzava, y = Dolg, fill = Dolg)) +
 #plot(dvanajsti_graf)
 
 
+
+#ZEMLJEVIDI
+
+#Napišem funkcijo, ki mi uvozi željen zemljevid sveta
+
+
 pretvori.zemljevid <- function(zemljevid, pogoj = TRUE) {
   fo <- fortify(zemljevid[pogoj,])
   data <- zemljevid@data
@@ -169,7 +176,33 @@ pretvori.zemljevid <- function(zemljevid, pogoj = TRUE) {
 
 svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
                         "ne_110m_admin_0_countries")
+
+
+#Narišem zemljevid zadolženosti držav evropske unije
+
+Dolg <- filter(podatki1, Cas == 2014)
+m1 <- match(svet$adm0_a3, Dolg$Drzava)
+svet$Dolg <- Dolg$Dolg[m1]
 evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
-ggplot() + geom_polygon(data = evropa, aes(x = long, y = lat, group = group),
-                        color = "grey") + xlim(-10, 50) + ylim(34, 72)
+zem1 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, group = group, fill = Dolg),
+                        color = "grey") + xlim(-10, 50) + ylim(34, 72) + 
+  scale_fill_continuous(low = "#69b8f6", high = "#142d45") + xlab("") + ylab("") 
+
+#plot(zem1)
+
+
+
+#Narišem zemljevid sveta, kjer sta prikazani še Japonska in ZDA
+
+Dolg <- tabela_3_6
+m2 <- match(svet$name_long, Dolg$Drzava)
+svet$dolg2 <- Dolg$Dolg[m2]
+sv <- pretvori.zemljevid(svet, ! svet$name_long %in% c("Brazil", "Greenland"))
+
+zem2 <- ggplot() + geom_polygon(data = sv, aes(x=(long+45)%%360, y=lat, group = group, fill = dolg2),
+                                color = "grey")  +
+  scale_fill_continuous(low = "#69b8f6", high = "#142d45") + xlab("") + ylab("") 
+
+plot(zem2)
+
 
