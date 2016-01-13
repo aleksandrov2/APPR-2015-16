@@ -181,6 +181,9 @@ print(dvanajsti_graf)
 print(zem1)
 ```
 
+```{r zem2, echo=FALSE, warning=FALSE, fig.cap='Zadolzenost evropskih držav, Japonske in ZDA leta 2011', fig.align='center'}
+print(zem2)
+```
 
 ***
 
