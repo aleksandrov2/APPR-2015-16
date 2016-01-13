@@ -132,6 +132,9 @@ deseti_graf + geom_smooth(method = "lm")
 
 #plot(deseti_graf)
 
+napoved <- lm(data = podatki3 %>% filter(Cas == 2006), Deficit ~ Dolg)
+napoved
+predict(napoved, data.frame(Dolg=seq(0, 250, 25)))
 
 
 enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg, 
@@ -143,7 +146,9 @@ enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014), aes(x = Dolg,
 
 #plot(enajsti_graf)
 
-
+napoved2 <- lm(data = podatki3 %>% filter(Cas == 2014), Deficit ~ Dolg)
+napoved2
+predict(napoved, data.frame(Dolg=seq(0, 250, 25)))
 
 #Stolpični graf, kjer primerjam zadolženost evropskih držav z ZDA in Japonsko 
 
