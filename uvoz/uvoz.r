@@ -17,9 +17,10 @@ library(maptools)
 link2 <- "http://www.tradingeconomics.com/country-list/government-debt-to-gdp"
 
 stran2 <- html_session(link2) %>% read_html()
+stran2 <- html_session(link2) %>% read_html()
 tabela2 <- stran2 %>%
-  html_node( ) %>%   #tukaj ne vem kako naj najdem tabelo
-  html_table()
+  html_nodes(xpath="//table[@class='table table-condensed table-hover']") %>%
+  .[[1]] %>% html_table()
 
 
 #link do wikipedije kjer sem dobil podatke
