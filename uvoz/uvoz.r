@@ -39,7 +39,7 @@ tabela_3 <- tabela[c("Drzava", "2011")]
 
 #View(tabela_1)
 #View(tabela_2)
-View(tabela_3)
+#View(tabela_3)
 
 
 
