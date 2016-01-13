@@ -93,13 +93,6 @@ Iz prvih dveh tabel sem ustvaril številne druge podtabele, kjer je po posamezni
 kable(head(dolgovi_2014))
 ```
 
-Ker je eden izmed mojih ciljev tudi analizirati hitrost naraščanja javnega dolga v evropskih državah, sem ustvaril dve podtabeli, ki prikazujeta dolg/deficit od leta 2006 do 2014.
-
-
-```{r evropa_dolgovi, echo=FALSE}
-kable(head(evropa_dolgovi))
-```
-
 
 ***
 
@@ -182,18 +175,7 @@ Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 print(dvanajsti_graf)
 ```
 
-pretvori.zemljevid <- function(zemljevid, pogoj = TRUE) {
-  fo <- fortify(zemljevid[pogoj,])
-  data <- zemljevid@data
-  data$id <- as.character(0:(nrow(data)-1))
-  return(inner_join(fo, data, by="id"))
-}
 
-svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
-                        "ne_110m_admin_0_countries")
-evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
-ggplot() + geom_polygon(data = evropa, aes(x = long, y = lat, group = group),
-                        color = "grey") + xlim(-10, 50) + ylim(34, 72)
 
 ***
 
