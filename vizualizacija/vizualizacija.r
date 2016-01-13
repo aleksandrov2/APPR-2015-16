@@ -191,7 +191,6 @@ zem1 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, group = group,
 #plot(zem1)
 
 
-
 #Narišem zemljevid sveta, kjer sta prikazani še Japonska in ZDA
 
 Dolg <- tabela_3_6
@@ -203,6 +202,7 @@ zem2 <- ggplot() + geom_polygon(data = sv, aes(x=(long+45)%%360, y=lat, group = 
                                 color = "grey")  +
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + xlab("") + ylab("") 
 
-plot(zem2)
+#plot(zem2)
+
 
 
