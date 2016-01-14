@@ -206,13 +206,14 @@ zem1 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, group = group,
 
 #Narišem zemljevid sveta, kjer sta prikazani še Japonska in ZDA
 
-Dolg <- tabela_3_6
+Dolg <- tabela2
 m2 <- match(svet$name_long, Dolg$Drzava)
 svet$dolg2 <- Dolg$Dolg[m2]
-sv <- pretvori.zemljevid(svet, ! svet$name_long %in% c("Brazil", "Greenland"))
-
-zem2 <- ggplot() + geom_polygon(data = sv, aes(x=(long+45)%%360, y=lat, group = group, fill = dolg2),
-                                color = "grey")  +
+#sv <- pretvori.zemljevid(svet, ! svet$name_long %in% c("Brazil", "Greenland"))
+sv <- pretvori.zemljevid(svet)
+zem2 <- ggplot() + geom_polygon(data = sv, aes(x=long, y=lat, 
+                                               group = group, fill = dolg2),
+                                color = "grey")   + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + xlab("") + ylab("") 
 
 #plot(zem2)
