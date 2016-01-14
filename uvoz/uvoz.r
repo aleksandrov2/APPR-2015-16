@@ -21,6 +21,12 @@ tabela2 <- stran2 %>%
   html_nodes(xpath="//table[@class='table table-condensed table-hover']") %>%
   .[[2]] %>% html_table(fill = TRUE)
 
+#vzamem samo prva dva stolpca in preimenujem
+tabela2 <- tabela2[1:2]
+names(tabela2) <- c("Drzava", "Dolg")
+
+#View(tabela2)
+
 
 #link do wikipedije kjer sem dobil podatke
 link <- "https://en.wikipedia.org/wiki/National_debt_of_the_United_States"
