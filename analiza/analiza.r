@@ -1,10 +1,22 @@
 # 4. faza: Analiza podatkov
 
+# 4. faza: Analiza podatkov
+
 napoved <- lm(data = podatki3 %>% filter(Cas == 2006), Deficit ~ Dolg)
 predict(napoved, data.frame(Dolg=seq(0, 250, 25))) 
 
 napoved2 <- lm(data = podatki3 %>% filter(Cas == 2014), Deficit ~ Dolg)
 predict(napoved2, data.frame(Dolg=seq(0, 250, 25)))
+
+Zadolzenost <- c(0,25,50,75,100,125,150,175,200,225,250)
+Deficit <- c(0.80,-0.15,-1.09,-2.03,-2.98,-3.92,-4.86,-5.81,-6.75,-7.69,-8.63)
+
+
+#rad bi naredil tabelo, ki bi prikazovala napoved gibanja deficita, če vemo
+#kakšna je naša zadolženost
+
+predikcija <- as.table(setNames(Zadolzenost, Deficit))
+
 
 
 #sedaj bi radi ločili države v skupine, glede na dolg in deficit
@@ -19,6 +31,7 @@ podatki3.skupine <- data.frame(Drzava = names(k$cluster),
 
 #prvi zemljevid kaže razdelitev evropskih držav na dve skupini
 k <- kmeans(podatki3.norm, 2)
+table(k$cluster)
 k <- kmeans(podatki3.norm, 2, nstart = 10000)
 
 
@@ -32,7 +45,6 @@ zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
   ylim(34, 72) + 
   #scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   xlab("") + ylab("") 
-
 
 #plot(zem3)
 
@@ -54,6 +66,5 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
   ylim(34, 72) + 
   #scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   xlab("") + ylab("") 
-
 
 #plot(zem4)
