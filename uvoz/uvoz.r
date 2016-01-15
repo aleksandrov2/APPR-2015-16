@@ -26,7 +26,7 @@ tabela2 <- tabela2[1:2]
 names(tabela2) <- c("Drzava", "Dolg")
 tabela2$Drzava[tabela2$Drzava == "Russia"] <- "Russian Federation"
 
-View(tabela2)
+#View(tabela2)
 
 
 #link do wikipedije kjer sem dobil podatke
