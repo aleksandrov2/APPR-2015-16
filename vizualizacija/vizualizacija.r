@@ -132,10 +132,6 @@ deseti_graf <- ggplot(podatki3 %>% filter(Cas == 2006),
 
 #plot(deseti_graf+ geom_smooth(method = "lm"))
 
-napoved <- lm(data = podatki3 %>% filter(Cas == 2006), Deficit ~ Dolg)
-napoved
-predict(napoved, data.frame(Dolg=seq(0, 250, 25))) 
-
 
 
 enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014),
@@ -149,13 +145,6 @@ enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014),
 #plot(enajsti_graf+ geom_smooth(method = "lm")) 
 
 
-napoved2 <- lm(data = podatki3 %>% filter(Cas == 2014), Deficit ~ Dolg)
-napoved2
-predict(napoved2, data.frame(Dolg=seq(0, 250, 25)))
-
-napoved2 <- lm(data = podatki3 %>% filter(Cas == 2014), Deficit ~ Dolg)
-napoved2
-predict(napoved, data.frame(Dolg=seq(0, 250, 25)))
 
 #Stolpični graf, kjer primerjam zadolženost evropskih držav z ZDA in Japonsko 
 
@@ -172,7 +161,6 @@ dvanajsti_graf <- ggplot(tabela_3_6, aes(x = Drzava, y = Dolg, fill = Dolg)) +
   
 
 #plot(dvanajsti_graf)
-
 
 
 #ZEMLJEVIDI
@@ -198,25 +186,28 @@ m1 <- match(svet$adm0_a3, Dolg$Drzava)
 svet$Dolg <- Dolg$Dolg[m1]
 evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
 zem1 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, group = group, fill = Dolg),
-                        color = "grey") + xlim(-10, 50) + ylim(34, 72) + 
+                                color = "grey") + xlim(-10, 50) + ylim(34, 72) + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + xlab("") + ylab("") 
 
 #plot(zem1)
+
+
 
 
 #Narišem zemljevid sveta, kjer sta prikazani še Japonska in ZDA
 
 Dolg <- tabela2
 m2 <- match(svet$name_long, Dolg$Drzava)
-svet$dolg2 <- Dolg$Dolg[m2]
-#sv <- pretvori.zemljevid(svet, ! svet$name_long %in% c("Brazil", "Greenland"))
+svet$Dolg <- Dolg$Dolg[m2]
 sv <- pretvori.zemljevid(svet)
 zem2 <- ggplot() + geom_polygon(data = sv, aes(x=long, y=lat, 
-                                               group = group, fill = dolg2),
+                                               group = group, fill = Dolg),
                                 color = "grey")   + 
-  scale_fill_continuous(low = "#69b8f6", high = "#142d45") + xlab("") + ylab("") 
+  scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
+  xlab("") + ylab("") 
 
 #plot(zem2)
+
 
 
 
