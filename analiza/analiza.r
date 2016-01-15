@@ -26,15 +26,15 @@ k$tot.withinss
 k <- kmeans(podatki3.norm, 10, nstart = 1000)
 k$tot.withinss
 
-skupina <- filter(podatki3.skupine)
+skupina <- podatki3.skupine
 m3 <- match(svet$adm0_a3, skupina$Drzava)
 svet$skupina <- skupina$skupina[m3]
 evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
 zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, 
-                                group = group, fill = Dolg),
+                                group = group, fill = skupina),
                                 color = "grey") + xlim(-10, 50) + 
   ylim(34, 72) + 
-  scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
+  #scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   xlab("") + ylab("") 
 
 
