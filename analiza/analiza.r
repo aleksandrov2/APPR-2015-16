@@ -38,4 +38,4 @@ zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
 
 
 
-plot(zem3)
+#plot(zem3)
