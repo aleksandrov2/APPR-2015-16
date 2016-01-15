@@ -14,7 +14,6 @@ rownames(podatki3_2014) <- podatki3_2014$Drzava
 podatki3_2014 <- podatki3_2014[c("Dolg", "Deficit")]
 podatki3.norm <- scale(podatki3_2014)
 k <- kmeans(podatki3.norm, 5)
-head(k$cluster, n = 15)
 table(k$cluster)
 
 
@@ -23,7 +22,7 @@ podatki3.skupine <- data.frame(Drzava = names(k$cluster),
 
 
 k$tot.withinss
-k <- kmeans(podatki3.norm, 10, nstart = 1000)
+k <- kmeans(podatki3.norm, 10, nstart = 10000)
 k$tot.withinss
 
 skupina <- podatki3.skupine
