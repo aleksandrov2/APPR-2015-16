@@ -211,3 +211,4 @@ zem2 <- ggplot() + geom_polygon(data = sv, aes(x=long, y=lat,
 
 
 
+
