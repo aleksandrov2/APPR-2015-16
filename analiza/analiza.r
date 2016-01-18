@@ -56,17 +56,27 @@ podatki3.skupine2 <- data.frame(Drzava = names(k2$cluster),
                                 skupina = factor(k2$cluster))
 
 
+
 skupina2 <- podatki3.skupine2
 m4 <- match(svet$adm0_a3, skupina2$Drzava)
-svet$skupina2 <- skupina2$skupina[m4]
+imena <- skupina2(c("DEU","SWE","FRA","SVN","GRC"),"skupina2")
+svet$skupina2 <- factor(skupina2$skupina[m4],levels = imena, ordered = TRUE)
 evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
 zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, 
                                                    group = group, fill = skupina2),
                                 color = "grey") + xlim(-10, 50) + 
-  ylim(34, 72) + 
-  xlab("") + ylab("") 
+  ylim(34, 72) + xlab("") + ylab("") +
+  scale_fill_manual(values = setNames(c("blue","chartreuse4","darkolivegreen1",
+                                        "darkorange1","firebrick1"), imena),
+                    labels = setNames(c("Najboljši", "Zelo dobri",
+                                        "Dobri","Slabi","Zgube"), imena),
+                    na.value = "#7f7f7f")
 
 #plot(zem4)
+
+
+
+
 
 
 
