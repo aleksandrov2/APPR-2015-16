@@ -45,7 +45,7 @@ zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
                                 color = "grey") + xlim(-10, 50) + 
   ylim(34, 72) + xlab("") + ylab("") +
   scale_fill_manual(values = setNames(c("#00bfc4", "#f8766d"), sever.jug),
-                    labels = setNames(c("Sever", "Jug"), sever.jug),
+                    labels = setNames(c("Piflarji", "PIGSS"), sever.jug),
                     na.value = "#7f7f7f")
 
 #plot(zem3)
@@ -74,18 +74,17 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
                                         "Kr gud","Luzerji","Totalni noob"), imena),
                     na.value = "#7f7f7f")
 
-#plot(zem4)
+plot(zem4)
 
 
 
 
 #narišem dendrogram
 
-d <- dist(as.matrix(podatki3.norm))
-hc <- hclust(d) 
+razporeditev <- dist(as.matrix(podatki3.norm))
+hc <- hclust(razporeditev, method = "single") 
 
-#plot(hc)
-
+#plot(hc, main = "Razporeditev držav", sub = "", hang = -1)
 
 
 
