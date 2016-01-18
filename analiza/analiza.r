@@ -35,7 +35,9 @@ k <- kmeans(podatki3.norm, 2, nstart = 10000)
 podatki3.skupine <- data.frame(Drzava = names(k$cluster), 
                                skupina = factor(k$cluster))
 
+skupina <- podatki3.skupine
 sever.jug <- skupina[c("SWE", "GRC"), "skupina"]
+m3 <- match(svet$adm0_a3, skupina$Drzava)
 svet$skupina <- factor(skupina$skupina[m3], levels = sever.jug, ordered = TRUE)
 evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
 zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, 
@@ -49,6 +51,7 @@ zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
 #plot(zem3)
 
 
+
 #Ta graf prikazuje razdelitev evrope na 5 skupin držav
 
 k2 <- kmeans(podatki3.norm, 5, nstart = 10000)
@@ -59,14 +62,14 @@ podatki3.skupine2 <- data.frame(Drzava = names(k2$cluster),
 
 skupina2 <- podatki3.skupine2
 m4 <- match(svet$adm0_a3, skupina2$Drzava)
-imena <- skupina2(c("DEU","SWE","FRA","SVN","GRC"),"skupina2")
+imena <- skupina2[c("DEU","SWE","FRA","SVN","GRC"),"skupina2"]
 svet$skupina2 <- factor(skupina2$skupina[m4],levels = imena, ordered = TRUE)
 evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
 zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, 
                                                    group = group, fill = skupina2),
                                 color = "grey") + xlim(-10, 50) + 
   ylim(34, 72) + xlab("") + ylab("") +
-  scale_fill_manual(values = setNames(c("blue","chartreuse4","darkolivegreen1",
+  scale_fill_manual(values = setNames(c("#00bfc4","chartreuse4","darkolivegreen1",
                                         "darkorange1","firebrick1"), imena),
                     labels = setNames(c("Najboljši", "Zelo dobri",
                                         "Dobri","Slabi","Zgube"), imena),
@@ -75,12 +78,17 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
 #plot(zem4)
 
 
+
+
+
+
 #narišem dendrogram
 
 d <- dist(as.matrix(podatki3.norm))
 hc <- hclust(d) 
 
-plot(hc)
+#plot(hc)
+
 
 
 
