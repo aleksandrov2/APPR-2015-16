@@ -68,13 +68,13 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
                                                    group = group, fill = skupina2),
                                 color = "grey") + xlim(-10, 50) + 
   ylim(34, 72) + xlab("") + ylab("") +
-  scale_fill_manual(values = setNames(c("#00bfc4","chartreuse4","darkolivegreen1",
-                                        "darkorange1","firebrick1"), imena),
-                    labels = setNames(c("Najboljsi", "Zelo dobri",
-                                        "Dobri","Slabi","Zgube"), imena),
+  scale_fill_manual(values = setNames(c("cyan3","chartreuse2","yellow1",
+                                        "goldenrod","firebrick1"), imena),
+                    labels = setNames(c("Najači", "Ful kul",
+                                        "Kr gud","Luzerji","Totalni noob"), imena),
                     na.value = "#7f7f7f")
 
-plot(zem4)
+#plot(zem4)
 
 
 
@@ -85,7 +85,6 @@ d <- dist(as.matrix(podatki3.norm))
 hc <- hclust(d) 
 
 #plot(hc)
-
 
 
 
