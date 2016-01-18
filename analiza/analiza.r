@@ -74,7 +74,7 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
                                         "Kr gud","Luzerji","Totalni noob"), imena),
                     na.value = "#7f7f7f")
 
-plot(zem4)
+#plot(zem4)
 
 
 
@@ -82,9 +82,8 @@ plot(zem4)
 #narišem dendrogram
 
 razporeditev <- dist(as.matrix(podatki3.norm))
-hc <- hclust(razporeditev, method = "single") 
+hc <- hclust(razporeditev, method = "centroid") 
 
 #plot(hc, main = "Razporeditev držav", sub = "", hang = -1)
-
 
 
