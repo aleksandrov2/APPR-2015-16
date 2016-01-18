@@ -56,7 +56,7 @@ zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
 
 k2 <- kmeans(podatki3.norm, 5, nstart = 10000)
 podatki3.skupine2 <- data.frame(Drzava = names(k2$cluster), 
-                                skupina = factor(k2$cluster))
+                                skupina2 = factor(k2$cluster))
 
 
 skupina2 <- podatki3.skupine2
@@ -74,7 +74,7 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
                                         "Dobri","Slabi","Zgube"), imena),
                     na.value = "#7f7f7f")
 
-#plot(zem4)
+plot(zem4)
 
 
 
@@ -85,9 +85,6 @@ d <- dist(as.matrix(podatki3.norm))
 hc <- hclust(d) 
 
 #plot(hc)
-
-
-
 
 
 
