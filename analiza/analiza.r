@@ -75,7 +75,12 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
 #plot(zem4)
 
 
+#narišem dendrogram
 
+d <- dist(as.matrix(podatki3.norm))
+hc <- hclust(d) 
+
+plot(hc)
 
 
 
