@@ -10,7 +10,7 @@ predict(napoved2, data.frame(Dolg=seq(0, 250, 25)))
 napoved.tabela <- data.frame(Dolg=seq(0, 250, 25))
 napoved.tabela$Deficit <- predict(napoved, napoved.tabela) 
 
-#View(napoved.tabela2)
+#View(napoved.tabela)
 
 napoved.tabela2 <- data.frame(Dolg=seq(0, 250, 25))
 napoved.tabela2$Deficit <- predict(napoved2, napoved.tabela2) 
