@@ -198,6 +198,7 @@ source("analiza/analiza.r", encoding = "UTF-8")
 ```{r napoved.tabela2, echo=FALSE}
 kable(napoved.tabela2)
 ```
+
 ```{r zem3, echo=FALSE, warning=FALSE, fig.cap='Razdelitev evropskih drzav v 2 skupini', fig.align='center'}
 print(zem3)
 ```
@@ -205,6 +206,7 @@ print(zem3)
 ```{r zem4, echo=FALSE, warning=FALSE, fig.cap='Razdelitev evropskih drzav v 5 skupin', fig.align='center'}
 print(zem4)
 ```
+
 
 
 
