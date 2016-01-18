@@ -59,7 +59,6 @@ podatki3.skupine2 <- data.frame(Drzava = names(k2$cluster),
                                 skupina = factor(k2$cluster))
 
 
-
 skupina2 <- podatki3.skupine2
 m4 <- match(svet$adm0_a3, skupina2$Drzava)
 imena <- skupina2[c("DEU","SWE","FRA","SVN","GRC"),"skupina2"]
@@ -71,13 +70,11 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
   ylim(34, 72) + xlab("") + ylab("") +
   scale_fill_manual(values = setNames(c("#00bfc4","chartreuse4","darkolivegreen1",
                                         "darkorange1","firebrick1"), imena),
-                    labels = setNames(c("Najboljši", "Zelo dobri",
+                    labels = setNames(c("Najboljsi", "Zelo dobri",
                                         "Dobri","Slabi","Zgube"), imena),
                     na.value = "#7f7f7f")
 
 #plot(zem4)
-
-
 
 
 
@@ -88,6 +85,9 @@ d <- dist(as.matrix(podatki3.norm))
 hc <- hclust(d) 
 
 #plot(hc)
+
+
+
 
 
 
