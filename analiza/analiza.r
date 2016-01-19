@@ -1,5 +1,6 @@
 # 4. faza: Analiza podatkov
 
+#evropa predikcija
 
 enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014),
                        aes(x = Dolg, y = Deficit)) + 
@@ -11,6 +12,7 @@ enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014),
 
 #plot(enajsti_graf+ geom_smooth(method = "lm"))
 
+#eksplicitni izračun deficita po letih
 
 napoved <- lm(data = podatki3 %>% filter(Cas == 2006), Deficit ~ Dolg)
 predict(napoved, data.frame(Dolg=seq(0, 250, 25))) 
@@ -28,6 +30,30 @@ napoved.tabela2 <- data.frame(Dolg=seq(0, 250, 25))
 napoved.tabela2$Deficit <- predict(napoved2, napoved.tabela2) 
 
 #View(napoved.tabela2)
+
+
+#Slovenija predikcija
+
+slo_graf <- ggplot(podatki3 %>% filter(Drzava == "SVN"),
+                   aes(x = Dolg, y = Deficit)) + 
+  guides(color = guide_legend(ncol = 2)) +
+  geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
+  geom_hline(yintercept=crta) + 
+  geom_hline(yintercept=crta1, colour="red") 
+
+
+#plot(slo_graf+ geom_smooth(method = "lm")) 
+
+
+#eksplicitni izračun deficita Slovenija
+
+napoved3 <- lm(data = podatki3 %>% filter(Drzava == "SVN"), Deficit ~ Dolg)
+predict(napoved3, data.frame(Dolg=seq(0, 250, 25))) 
+napoved.tabela3 <- data.frame(Dolg=seq(0, 250, 25))
+napoved.tabela3$Deficit <- predict(napoved3, napoved.tabela3)
+
+#View(napoved.tabela3)
+
 
 
 #sedaj bi radi ločili države v skupine, glede na dolg in deficit
