@@ -9,6 +9,8 @@ output:
   html_document: default
 ---
 
+\newpage
+
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
 # in sledimo navodilom v programu.
@@ -23,7 +25,8 @@ source("lib/libraries.r", encoding = "UTF-8")
 Izbral sem si temo `Dolgovi in primankljaji držav v Evropski uniji`. V svojem poročilu bom analiziral stopnjo zadolženosti držav evropske unije in njihove deficite v letih od 2006 do 2014. Preveril bom kako je naraščala zadolženost držav v evropi in ali morda obstaja kakšna korelacija med dolgom in deficitom. Primerjal bom posamezne države evropske unije in poskusil ugotoviti ali so problematične vse ali obstaja samo neka skupina članic, ki ne vzdržujejo proračunske discipline. Ker je zadnja leta veliko govora tudi o Maastrichskih kriterijih in o tem kako imamo prevelike stopnje zadolženosti, bom na koncu primerjal evropo z drugima dvema najbolj razvitima državama Japonsko in ZDA.
 Nasploh je to zelo pomembna tema, saj bodo odločitve politikov in ekonomistov, kakšna naj bo naša strategija pri zadolževanju, uplivale na vsakdanje življenje vseh nas. Na eni strani so nekateri ekonomisti prepričani, da je treba vzdrževati strogo proračunsko disciplino, torej porabiti toliko kolikor država pobere z davki. Ostali pa verjamejo, da je proračunski primakljaj nujen, če hočemo preprečiti ponoven padec v recesijo.
 
-***
+\newpage
+
 
 # Obdelava, uvoz in čiščenje podatkov
 
@@ -95,7 +98,9 @@ kable(head(dolgovi_2014))
 ```
 
 
-***
+
+
+\newpage
 
 # Analiza in vizualizacija podatkov
 
@@ -106,15 +111,19 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 Na teh dveh grafih lahko tako vidimo kako je zadolženost evropskih držav leta 2006 narasla do leta 2014.
 
-```{r graf1, echo=FALSE, warning=FALSE, fig.cap='Dolg evropskih drzav leta 2006', fig.align='center'}
+
+```{r graf1, echo=FALSE, warning=FALSE, fig.cap='Dolg evropskih drzav leta 2006', fig.align='center',fig.pos='h'}
 print(prvi_graf)
 ```
 
-```{r graf2, echo=FALSE, warning=FALSE, fig.cap='Dolg evropskih drzav leta 2014', fig.align='center'}
+
+```{r graf2, echo=FALSE, warning=FALSE, fig.cap='Dolg evropskih drzav leta 2014', fig.align='center',fig.pos='h'}
 print(drugi_graf)
 ```
 
+
 Ta graf prav tako prikazuje zadolženost evropskih držav leta 2014, vendar sem tukaj vsako državo aproksimiral s piko in njena velikost ponazarja dolg države. Prav tako je na grafu z rdečo črto označena povprečna zadolženost. 
+
 
 ```{r graf3, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014', fig.align='center'}
 print(tretji_graf)
@@ -123,35 +132,45 @@ print(tretji_graf)
 
 Na naslednjih dveh grafih lahko vidimo kakšen deficit so imele države v letu 2006 in 2014. Opazimo lahko, da so države v letu 2014 imele večje težave pri doseganju uravnoteženega proračuna. 
 
+
 ```{r graf4, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2006', fig.align='center'}
 print(cetrti_graf)
 ```
+
 
 ```{r graf5, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje deficit v letu 2014', fig.align='center'}
 print(peti_graf)
 ```
 
+
 Kot vidimo sta zadolženost držav in število tistih, ki so imele primankljaj skozi čas naraščala. Vendar pa zaskrbljujoče narašča tudi število držav z dolgom, ki presega 100% BDP. Če sta bili leta 2006 samo dve taki državi, jih je bilo leta 2014 že devet, kar se vidi iz teh dveh grafov. 
+
 
 ```{r graf6, echo=FALSE, warning=FALSE, fig.cap='Drzave z dolgom vecjim od 100% BDP leta 2006', fig.align='center'}
 print(sesti_graf)
 ```
 
+
 ```{r graf7, echo=FALSE, warning=FALSE, fig.cap='Drzave z dolgom vecjim od 100% BDP leta 2014', fig.align='center'}
 print(sedmi_graf)
 ```
+
 
 Sedaj si poglejmo kako je naraščal dolg posameznih držav skozi čas. Še posebej sem pod drobnogled vzel Slovenijo. Podatki kažejo, da smo se odrezali precej slabo, saj se je naša zadolženost v 9 letih povečala za 60% in malo je držav, ki bi se zadolževale s tako hitrostjo. To nas postavi vštric z državami kot so Portugalska, Grčija, Irska in Velika Britanija, od katerih so prve tri znane kot bolnice evrope. Prav zato je sedaj toliko bolj razumljivo zakaj so bile pred leti napovedi, da bo v našo državo prišla trojka, saj smo se zadolževali z rekordno hitrostjo. 
 
 Prvi graf kaže hitrost zadolževanja Slovenije, medtem ko drugi graf kaže hitrost zadolževanja Madžarske, kar je hitrost s katero se je zadolževala večina drugih evropskih držav. 
 
+
+
 ```{r graf8, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolzevanja Slovenije', fig.align='center'}
 print(osmi_graf)
 ```
 
+
 ```{r graf9, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolzevanja Madzarske', fig.align='center'}
 print(deveti_graf)
 ```
+
 
 Analizo evroobmočja sem zaključil z grafom, ki ima na abscisni osi podano zadolženost države, na ordinati pa deficit tistega leta. Vsaka država je aproksimirana s svojo točko, velikost točke pa je določena z enačbo `size = Dolg-10*Deficit`. Večje kot je število, slabše se je ta država odrezala. Na grafu sem s črno črto označil mejo uravnoteženega proračuna, torej takrat ko ima država proračunski presežek in z rdečo črto Maastrichtsko določilo, da deficit države ne sme pasti pod -3% BDP letno.
 
@@ -161,6 +180,7 @@ Prvi graf prikazuje razporeditev držav v leta 2006, drugi pa v letu 2014. Zanim
 ```{r graf10, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih drzav leta 2006', fig.align='center'}
 print(deseti_graf+ geom_smooth(method = "lm"))
 ```
+
 
 ```{r graf11, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih drzav leta 2014', fig.align='center'}
 print(enajsti_graf+ geom_smooth(method = "lm"))
@@ -176,6 +196,7 @@ Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 print(dvanajsti_graf)
 ```
 
+
 Ustvaril sem tudi zemljevida, ki prikazujeta zadolženost evrope in sveta v letu 2014. Opazimo lahko, da so razvite države kot na primer ZDA, Japonska, Kanada, države zahodne evrope zelo visoko zadolžene, medtem ko imajo države v razvoju zelo nizke zadolženosti. Problem nastaja zaradi tega, ker imajo manj razvite države zelo visoko stopnjo varčevanja in nekaj od tega denarja posojajo nam po nizkih obrestnih merah. Posledica tega globalno-trgovskega neravnovesja je, da so se razvite države zelo zadolžile. 
 
 
@@ -183,11 +204,12 @@ Ustvaril sem tudi zemljevida, ki prikazujeta zadolženost evrope in sveta v letu
 print(zem1)
 ```
 
+
 ```{r zem2, echo=FALSE, warning=FALSE, fig.cap='Primerjava zadolzenosti drzav sveta v letu 2015', fig.align='center'}
 print(zem2)
 ```
 
-***
+\newpage
 
 # Napredna analiza podatkov
 
@@ -195,18 +217,28 @@ print(zem2)
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
+
+
 ```{r napoved.tabela2, echo=FALSE}
 kable(napoved.tabela2)
 ```
 
+
 ```{r zem3, echo=FALSE, warning=FALSE, fig.cap='Razdelitev evropskih drzav v 2 skupini', fig.align='center'}
 print(zem3)
 ```
+
 
 ```{r zem4, echo=FALSE, warning=FALSE, fig.cap='Razdelitev evropskih drzav v 5 skupin', fig.align='center'}
 print(zem4)
 ```
 
 
+```{r dend, echo=FALSE, warning=FALSE, fig.cap='Razdelitev z metodo ward.D', fig.align='center'}
+plot(dend, main = "Razporeditev držav", sub = "")
+```
 
 
+```{r dend2, echo=FALSE, warning=FALSE, fig.cap='Razporeditev z metodo centroid', fig.align='center'}
+plot(dend2, main="Razporeditev držav", sub="")
+```
