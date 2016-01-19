@@ -1,4 +1,5 @@
 # 4. faza: Analiza podatkov
+library(dendextend)
 
 napoved <- lm(data = podatki3 %>% filter(Cas == 2006), Deficit ~ Dolg)
 predict(napoved, data.frame(Dolg=seq(0, 250, 25))) 
@@ -79,11 +80,37 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
 
 
 
-#narišem dendrogram
+#narišem dendrogram razporeditev na 5 skupin metoda 
 
 razporeditev <- dist(as.matrix(podatki3.norm))
-hc <- hclust(razporeditev, method = "centroid") 
+hc <- hclust(razporeditev, method = "ward.D") 
 
-#plot(hc, main = "Razporeditev držav", sub = "", hang = -1)
+
+n <- 5 # število skupin
+dend <- as.dendrogram(hc, main = "Razporeditev držav", sub = "", hang = -1)
+sk <- cutree(hc, k = n)
+labels_colors(dend) <- rainbow(n)[sk][order.dendrogram(dend)]
+
+#plot(dend)
+
+
+
+
+#sedaj narišem dendrogram z metodo centroid
+
+razporeditev2 <- dist(as.matrix(podatki3.norm))
+hc2 <- hclust(razporeditev2, method = "centroid") 
+
+
+n <- 5 # število skupin
+dend2 <- as.dendrogram(hc, main = "Razporeditev držav", sub = "", hang = -1)
+sk2 <- cutree(hc2, k = n)
+labels_colors(dend2) <- rainbow(n)[sk2][order.dendrogram(dend2)]
+
+#plot(dend2)
+
+
+
+
 
 
