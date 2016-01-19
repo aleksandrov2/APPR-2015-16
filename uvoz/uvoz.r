@@ -26,7 +26,7 @@ tabela2 <- tabela2[1:2]
 names(tabela2) <- c("Drzava", "Dolg")
 tabela2$Drzava[tabela2$Drzava == "Russia"] <- "Russian Federation"
 
-View(tabela2)
+#View(tabela2)
 
 
 #link do wikipedije kjer sem dobil podatke
@@ -44,7 +44,8 @@ tabela <- rename(tabela, Drzava=Entity)
 
 #Odstranim % in spremenim nize v števila
 
-tabela[-1] <- apply(tabela[-1], 2, . %>% strapplyc("([0-9]+)") %>% unlist() %>% as.numeric())
+tabela[-1] <- apply(tabela[-1], 2,
+                    . %>% strapplyc("([0-9]+)") %>% unlist() %>% as.numeric())
 
 #View(tabela)
 
@@ -177,6 +178,3 @@ evropa_deficiti <- sapply(leta, . %>% {filter(podatki2, Cas == .) %>% {setNames(
 names(evropa_deficiti) <- c("2006","2007","2008","2009","2010","2011","2012","2013","2014")
 
 #View(evropa_deficiti)
-
-
-
