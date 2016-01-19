@@ -1,15 +1,5 @@
 # 2. faza: Uvoz
 
-library(knitr)
-
-library(ggplot2)
-library(dplyr)
-require(gsubfn)
-require(rvest)
-require(xml2)
-require(ggplot2)
-library(sp)
-library(maptools)
 
 #HTML UVOZ
 
