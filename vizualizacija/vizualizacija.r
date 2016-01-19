@@ -137,22 +137,6 @@ enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014),
 #plot(dvanajsti_graf)
 
 
-#Graf s krogi, večji kot je krog večja sta dolg in deficit te Slovenije. 
-#Vsako leto od 2006 do 2014 položaj kroga določa lego Slovenije, torej dolg 
-#in deficit Slovenije tistega leta
-
-
-slo_graf <- ggplot(podatki3 %>% filter(Drzava == "SVN"),
-                   aes(x = Dolg, y = Deficit)) + 
-  guides(color = guide_legend(ncol = 2)) +
-  geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
-  geom_hline(yintercept=crta) + 
-  geom_hline(yintercept=crta1, colour="red") 
-
-
-#plot(slo_graf+ geom_smooth(method = "lm")) 
-
-
 
 
 #Stolpični graf, kjer primerjam zadolženost evropskih držav z ZDA in Japonsko 
