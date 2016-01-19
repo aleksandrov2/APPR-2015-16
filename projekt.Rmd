@@ -1,11 +1,12 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R"
+title: "Analiza dolga in deficita držav v evropski uniji"
 author: "Patrik Gorše"
 output:
+  html_document: default
   pdf_document:
-    latex_engine: xelatex
     includes:
       in_header: lib/styles.sty
+    latex_engine: xelatex
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -105,11 +106,11 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 Na teh dveh grafih lahko tako vidimo kako je zadolženost evropskih držav leta 2006 narasla do leta 2014.
 
-```{r graf1, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2006', fig.align='center'}
+```{r graf1, echo=FALSE, warning=FALSE, fig.cap='Dolg evropskih drzav leta 2006', fig.align='center'}
 print(prvi_graf)
 ```
 
-```{r graf2, echo=FALSE, warning=FALSE, fig.cap='Ta graf prikazuje dolg v letu 2014', fig.align='center'}
+```{r graf2, echo=FALSE, warning=FALSE, fig.cap='Dolg evropskih drzav leta 2014', fig.align='center'}
 print(drugi_graf)
 ```
 
@@ -148,7 +149,7 @@ Prvi graf kaže hitrost zadolževanja Slovenije, medtem ko drugi graf kaže hitr
 print(osmi_graf)
 ```
 
-```{r graf9, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolževanja Madzarske', fig.align='center'}
+```{r graf9, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolzevanja Madzarske', fig.align='center'}
 print(deveti_graf)
 ```
 
@@ -166,7 +167,7 @@ print(enajsti_graf+ geom_smooth(method = "lm"))
 ```
 
 
- Zadnji dve državi imata vse ključne parametre zelo podobne evropi, torej stopnja razvitosti, tehnologija, življenski standard... Vendar ko primerjamo njuni stopnji zadolženosti vidimo, da je Japonska najbolj zadolžena od vseh, za neverjetnih 204% BDP, medtem ko je ZDA prav tako bolj zadolžena od večine evropskih držav. 
+Zadnji dve državi imata vse ključne parametre zelo podobne evropi, torej stopnja razvitosti, tehnologija, življenski standard... Vendar ko primerjamo njuni stopnji zadolženosti vidimo, da je Japonska najbolj zadolžena od vseh, za neverjetnih 204% BDP, medtem ko je ZDA prav tako bolj zadolžena od večine evropskih držav. 
 
 Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 
@@ -175,6 +176,7 @@ Graf prikazuje zadolženost evropskih držav, Japonske in ZDA v letu 2011.
 print(dvanajsti_graf)
 ```
 
+Ustvaril sem tudi zemljevida, ki prikazujeta zadolženost evrope in sveta v letu 2014. Opazimo lahko, da so razvite države kot na primer ZDA, Japonska, Kanada, države zahodne evrope zelo visoko zadolžene, medtem ko imajo države v razvoju zelo nizke zadolženosti. Problem nastaja zaradi tega, ker imajo manj razvite države zelo visoko stopnjo varčevanja in nekaj od tega denarja posojajo nam po nizkih obrestnih merah. Posledica tega globalno-trgovskega neravnovesja je, da so se razvite države zelo zadolžile. 
 
 
 ```{r zem1, echo=FALSE, warning=FALSE, fig.cap='Zadolzenost evropskih drzav leta 2014', fig.align='center'}
@@ -192,6 +194,19 @@ print(zem2)
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
+
+```{r napoved.tabela2, echo=FALSE}
+kable(napoved.tabela2)
+```
+
+```{r zem3, echo=FALSE, warning=FALSE, fig.cap='Razdelitev evropskih drzav v 2 skupini', fig.align='center'}
+print(zem3)
+```
+
+```{r zem4, echo=FALSE, warning=FALSE, fig.cap='Razdelitev evropskih drzav v 5 skupin', fig.align='center'}
+print(zem4)
+```
+
 
 
 
