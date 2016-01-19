@@ -204,6 +204,26 @@ Potem sem lahko tudi eksplicitno izračunal pričakovani deficit, npr. če bi im
 kable(napoved.tabela2)
 ```
 
+Vendar pa ima zgornja predikcija eno veliko težavo. Predikcija je utemljena na podatkih iz enega leta in mi vemo, da se razmere iz leta v leto malo spremenijo, kar lahko zelo zmoti koeficient premice, ki jo aproksimiramo. Prav tako je to približna ocena na podlagi povprečja in ni nujno točno določeno državo. Zato sem naredil še graf, ki prikazuje dolg in deficit `Slovenije` od leta 2006 do 2014. 
+
+```{r slo_graf, echo=FALSE, fig.cap='Sprememba dolga in deficita Slovenije od leta 2006 do 2014'}
+print(slo_graf)
+```
+
+Motila me je točka, ki predstavlja dolg in deficit `Slovenije` leta 2013. Takrat smo bili zadolženi za 80% BDP in naš deficit je znašal -15% BDP. Glede na to, da smo morali takrat reševati bančni sektor, je bil naš deficit posledično veliko večji. Ravno zaradi tega se mi leto 2013 ni zdelo reprezentativno, torej sem to točko odstranil in naredil linearno aproksimacijo skozi preostale točke. 
+
+
+
+
+
+Nato sem podobno kot pri grafu celotnega evroobmočja ustvaril tabelo, ki predvideva kakšen bi bil naš deficit v odvisnosti od zadolženosti `Slovenije`. 
+
+
+```{r napoved.tabela3, echo=FALSE, fig.cap='Napoved deficita Slovenije, glede na podatke iz let od 2006 do 2014'}
+kable(napoved.tabela3)
+```
+
+
 Nato me je zanimalo, če je stari rek, da je Evropa razdeljena na bogati sever in revni jug, vsaj delno podkrepljen z empiričnimi podatki. Izkazalo se je, da je to res. Severno-vzhodne države imajo manjše zadolženosti in deficite kot jugo-zahodne. Podatke za dolg in deficit za vsako državo, v mojem primeru v letu 2014, sem imel shranjene v tabeli, potem pa sem te podatke normiral in razdelil z metodo centroidov na dve skupini, kjer so bile skupaj države s podobnimi vrednostmi parametrov.
 
 ```{r zem3, echo=FALSE, warning=FALSE, fig.cap='Razdelitev evropskih drzav v 2 skupini', fig.align='center'}
@@ -222,4 +242,3 @@ Za na konec sem narisal dendrogram, da bi videl relacije med državami, torej ka
 ```{r dend, echo=FALSE, warning=FALSE, fig.cap='Razdelitev z metodo ward.D', fig.align='center'}
 plot(dend, main = "Razporeditev držav", sub = "")
 ```
-
