@@ -143,7 +143,7 @@ enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014),
 
 
 slo_graf <- ggplot(podatki3 %>% filter(Drzava == "SVN"),
-                       aes(x = Dolg, y = Deficit)) + 
+                   aes(x = Dolg, y = Deficit)) + 
   guides(color = guide_legend(ncol = 2)) +
   geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
   geom_hline(yintercept=crta) + 
@@ -215,6 +215,7 @@ zem2 <- ggplot() + geom_polygon(data = sv, aes(x=long, y=lat,
   xlab("") + ylab("") 
 
 #plot(zem2)
+
 
 
 
