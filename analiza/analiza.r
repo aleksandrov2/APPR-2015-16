@@ -1,5 +1,16 @@
 # 4. faza: Analiza podatkov
-library(dendextend)
+
+
+enajsti_graf <- ggplot(podatki3 %>% filter(Cas == 2014),
+                       aes(x = Dolg, y = Deficit)) + 
+  guides(color = guide_legend(ncol = 2)) +
+  geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
+  geom_hline(yintercept=crta) + 
+  geom_hline(yintercept=crta1, colour="red") 
+
+
+#plot(enajsti_graf+ geom_smooth(method = "lm"))
+
 
 napoved <- lm(data = podatki3 %>% filter(Cas == 2006), Deficit ~ Dolg)
 predict(napoved, data.frame(Dolg=seq(0, 250, 25))) 
@@ -55,14 +66,14 @@ zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
 
 #Ta graf prikazuje razdelitev evrope na 5 skupin držav
 
-k2 <- kmeans(podatki3.norm, 5, nstart = 10000)
+k2 <- kmeans(podatki3.norm, 4, nstart = 10000)
 podatki3.skupine2 <- data.frame(Drzava = names(k2$cluster), 
                                 skupina2 = factor(k2$cluster))
 
 
 skupina2 <- podatki3.skupine2
 m4 <- match(svet$adm0_a3, skupina2$Drzava)
-imena <- skupina2[c("DEU","SWE","FRA","SVN","GRC"),"skupina2"]
+imena <- skupina2[c("DEU","SWE","SVN","GRC"),"skupina2"]
 svet$skupina2 <- factor(skupina2$skupina[m4],levels = imena, ordered = TRUE)
 evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
 zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, 
@@ -70,9 +81,9 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
                                 color = "grey") + xlim(-10, 50) + 
   ylim(34, 72) + xlab("") + ylab("") +
   scale_fill_manual(values = setNames(c("cyan3","chartreuse2","yellow1",
-                                        "goldenrod","firebrick1"), imena),
-                    labels = setNames(c("Najači", "Ful kul",
-                                        "Kr gud","Luzerji","Totalni noob"), imena),
+                                        "firebrick1"), imena),
+                    labels = setNames(c("Najači","Kr gud",
+                                        "Luzerji","Totalni noob"), imena),
                     na.value = "#7f7f7f")
 
 #plot(zem4)
@@ -86,7 +97,7 @@ razporeditev <- dist(as.matrix(podatki3.norm))
 hc <- hclust(razporeditev, method = "ward.D") 
 
 
-n <- 5 # število skupin
+n <- 4 # število skupin
 dend <- as.dendrogram(hc, main = "Razporeditev držav", sub = "", hang = -1)
 sk <- cutree(hc, k = n)
 labels_colors(dend) <- rainbow(n)[sk][order.dendrogram(dend)]
@@ -102,12 +113,13 @@ razporeditev2 <- dist(as.matrix(podatki3.norm))
 hc2 <- hclust(razporeditev2, method = "centroid") 
 
 
-n <- 5 # število skupin
+n <- 4 # število skupin
 dend2 <- as.dendrogram(hc, main = "Razporeditev držav", sub = "", hang = -1)
 sk2 <- cutree(hc2, k = n)
 labels_colors(dend2) <- rainbow(n)[sk2][order.dendrogram(dend2)]
 
 #plot(dend2)
+
 
 
 
