@@ -32,27 +32,7 @@ napoved.tabela2$Deficit <- predict(napoved2, napoved.tabela2)
 #View(napoved.tabela2)
 
 
-#Slovenija predikcija
 
-slo_graf <- ggplot(podatki3 %>% filter(Drzava == "SVN"),
-                   aes(x = Dolg, y = Deficit)) + 
-  guides(color = guide_legend(ncol = 2)) +
-  geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
-  geom_hline(yintercept=crta) + 
-  geom_hline(yintercept=crta1, colour="red") 
-
-
-#plot(slo_graf+ geom_smooth(method = "lm")) 
-
-
-#eksplicitni izračun deficita Slovenija
-
-napoved3 <- lm(data = podatki3 %>% filter(Drzava == "SVN"), Deficit ~ Dolg)
-predict(napoved3, data.frame(Dolg=seq(0, 250, 25))) 
-napoved.tabela3 <- data.frame(Dolg=seq(0, 250, 25))
-napoved.tabela3$Deficit <- predict(napoved3, napoved.tabela3)
-
-#View(napoved.tabela3)
 
 
 
@@ -145,6 +125,7 @@ sk2 <- cutree(hc2, k = n)
 labels_colors(dend2) <- rainbow(n)[sk2][order.dendrogram(dend2)]
 
 #plot(dend2)
+
 
 
 
