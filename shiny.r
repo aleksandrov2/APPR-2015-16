@@ -1,0 +1,7 @@
+library(shiny)
+source("lib/libraries.r", encoding = "UTF-8")
+source("uvoz/uvoz.r", encoding = "UTF-8")
+source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
+source("podatki/podatki.r", encoding = "UTF-8")
+source("analiza/analiza.r", encoding = "UTF-8")
+runApp("shiny")
