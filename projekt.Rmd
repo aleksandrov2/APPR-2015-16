@@ -7,6 +7,7 @@ output:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
+runtime: shiny
 ---
 
 \newpage
@@ -194,8 +195,26 @@ source("analiza/analiza.r", encoding = "UTF-8")
 Nato me je zanimalo, če bi lahko s pomočjo vseh teh podatkov napovedal stanje kakšnih parametrov. Ugotovil sem, da bi bilo možno napovedati prihodnji deficit v odvisnosti od stopnje zadolženosti. Tako sem podatkom na grafu, ki prikazuje korelacijo med dolgom in deficitom, dodal linearno premico, ki jih najbolj aproksimira, torej je vsota kvadratov razdalj vseh točk od premice minimalna.
 
 
-```{r graf11, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih drzav leta 2006', fig.align='center'}
+<!--```{r graf11, echo=FALSE, warning=FALSE, fig.cap='Razporeditev evroopskih drzav leta 2006', fig.align='center'}
 print(enajsti_graf+ geom_smooth(method = "lm"))
+```-->
+
+```{r, echo = FALSE}
+
+
+sliderInput("leto", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
+
+renderPlot({
+  ggplot(podatki3 %>% filter(Cas == input$leto),
+                      aes(x = Dolg, y = Deficit)) + 
+  guides(color = guide_legend(ncol = 2)) +
+  geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
+  geom_hline(yintercept=crta) + 
+  geom_hline(yintercept=crta1, colour="red") +
+  geom_smooth(method = "lm")
+})
+
+
 ```
 
 Potem sem lahko tudi eksplicitno izračunal pričakovani deficit, npr. če bi imela neka evropska država dolg 200% BDP. Ustvaril sem tabelo, ki prikazuje pričakovan deficit, medtem ko zadolženost teče od 0 do 250% BDP s korakom 25% BDP. Seveda je to zgolj neko povprečje, nekaterim evropskih državam bi šlo bolje, nekaterim slabše. Pomembno je tudi to, da ta napoved temelji na predpostavki, da bi vse razmere ostale enake. Na primer država z dolgom 80% BDP v času krize bo verjetno imela večji primankljaj kot država z zadolženostjo 110% BDP v času ekspanzije. Vendar lahko v primeru, da nas zanima analiza statičnega sistema ocenimo deficite, ki so podani v naslednji tabeli, ki kaže podatke za leto 2014.
