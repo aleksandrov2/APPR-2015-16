@@ -63,7 +63,7 @@ zem3 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
                                 color = "grey") + xlim(-10, 50) + 
   ylim(34, 72) + xlab("") + ylab("") +
   scale_fill_manual(values = setNames(c("#00bfc4", "#f8766d"), sever.jug),
-                    labels = setNames(c("Piflarji", "PIGSS"), sever.jug),
+                    labels = setNames(c("Sever", "Jug"), sever.jug),
                     na.value = "#7f7f7f")
 
 #plot(zem3)
@@ -88,8 +88,8 @@ zem4 <- ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat,
   ylim(34, 72) + xlab("") + ylab("") +
   scale_fill_manual(values = setNames(c("cyan3","chartreuse2","yellow1",
                                         "firebrick1"), imena),
-                    labels = setNames(c("Najači","Kr gud",
-                                        "Luzerji","Totalni noob"), imena),
+                    labels = setNames(c("Najboljši","Dobri",
+                                        "Zadostni","Slabi"), imena),
                     na.value = "#7f7f7f")
 
 #plot(zem4)
