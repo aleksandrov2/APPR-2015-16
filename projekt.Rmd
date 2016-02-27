@@ -199,6 +199,7 @@ Nato me je zanimalo, če bi lahko s pomočjo vseh teh podatkov napovedal stanje 
 print(enajsti_graf+ geom_smooth(method = "lm"))
 ```-->
 
+
 ```{r, echo = FALSE}
 
 
@@ -212,6 +213,15 @@ renderPlot({
   geom_hline(yintercept=crta) + 
   geom_hline(yintercept=crta1, colour="red") +
   geom_smooth(method = "lm")
+})
+
+renderTable({
+napoved <- lm(data = podatki3 %>% filter(Cas == input$leto), Deficit ~ Dolg)
+predict(napoved, data.frame(Dolg=seq(0, 250, 25)))
+
+napoved.tabela <- data.frame(Dolg=seq(0, 250, 25))
+napoved.tabela$Deficit <- predict(napoved, napoved.tabela)
+
 })
 
 
