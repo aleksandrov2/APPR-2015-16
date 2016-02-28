@@ -113,13 +113,14 @@ Ko sem prečistil uvožene podatke, sem jih začel grafično interpretirati. Moj
 ```{r, echo = FALSE}
 
 
-sliderInput("leto", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
+sliderInput("leto_1", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
 
 renderPlot({
   ggplot(podatki1 %>% filter(Cas == input$leto), aes(x = Drzava, y = Dolg, fill=Dolg)) + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   geom_bar(stat ="identity") + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  ylim(0, 189)
 })
 
 ```
@@ -139,13 +140,14 @@ Ni bil pa dolg edina stvar, ki je naraščala. Evropske države so tudi zaradi g
 ```{r, echo = FALSE}
 
 
-sliderInput("leto", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
+sliderInput("leto_2", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
 
 renderPlot({
   ggplot(podatki2 %>% filter(Cas == input$leto), aes(x = Drzava, 
   y = Deficit, fill=Deficit)) + 
   geom_bar(stat ="identity") + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + 
+  ylim(0, 189)
 })
 
 ```
@@ -217,7 +219,7 @@ print(enajsti_graf+ geom_smooth(method = "lm"))
 ```{r, echo = FALSE}
 
 
-sliderInput("leto", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
+sliderInput("leto_3", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
 
 renderPlot({
   ggplot(podatki3 %>% filter(Cas == input$leto),
@@ -226,7 +228,7 @@ renderPlot({
   geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
   geom_hline(yintercept=crta) + 
   geom_hline(yintercept=crta1, colour="red") +
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm") + xlim(0, 190) + ylim(-15, 5)
 })
 
 renderTable({
@@ -236,6 +238,7 @@ predict(napoved, data.frame(Dolg=seq(0, 250, 25)))
 napoved.tabela <- data.frame(Dolg=seq(0, 250, 25))
 napoved.tabela$Deficit <- predict(napoved, napoved.tabela)
 
+return(napoved.tabela)
 })
 
 
@@ -268,3 +271,4 @@ Za na konec sem narisal dendrogram, da bi videl relacije med državami, torej ka
 ```{r dend, echo=FALSE, warning=FALSE, fig.cap='Razdelitev z metodo ward.D', fig.align='center'}
 plot(dend, main = "Razporeditev držav", sub = "")
 ```
+
