@@ -173,10 +173,10 @@ podatki11 <- rename(podatki1, Leto=Cas)
 
 renderPlot({
   ggplot(podatki11 %>% filter(Drzava==input$variable), 
-                      aes(x = Leto, y = Dolg, fill=Dolg)) +
+                      aes(x = factor(Leto), y = Dolg, fill=Dolg)) +
   geom_bar(stat ="identity") + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
-  ylim(0, 190) 
+  ylim(0, 190) + labs(x = "Leto")
 })
 
 ```
@@ -197,22 +197,17 @@ Za konec analize zgolj evropskega dolga sem ustvaril še zemljevid, ki jasno pri
 ```{r, echo = FALSE}
 
 
-sliderInput("leto_3", "Leto:", min = 2006, max = 2014, value = 2014,sep="")
+sliderInput("leto_3", "Leto:", min = 2006, max = 2014, value = 2008,sep="")
 
 renderPlot({
   Dolg <- filter(podatki1, Cas == input$leto_3)
   m1 <- match(svet$adm0_a3, Dolg$Drzava)
   svet$Dolg <- Dolg$Dolg[m1]
   evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
-  ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, group = group, fill = Dolg),
-                                color = "grey") + xlim(-10, 50) + ylim(34, 72) + 
-  scale_fill_continuous(low = "#69b8f6", high = "#142d45") + xlab("") + ylab("") 
+  ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, group = group, fill = Dolg), color = "grey") + xlim(-10, 50) + ylim(34, 72) + 
+  scale_fill_continuous(low = "#69b8f6", high = "#142d45",limits = c(0, 200)) + xlab("") + ylab("") 
 })
 
-```
-
-```{r zem1, echo=FALSE, warning=FALSE, fig.cap='Zadolzenost evropskih drzav leta 2014', fig.align='center'}
-print(zem1)
 ```
 
 
