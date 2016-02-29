@@ -155,17 +155,30 @@ renderPlot({
 
 Sedaj si poglejmo kako je naraščal dolg posameznih držav skozi čas. Še posebej sem pod drobnogled vzel `Slovenijo`. Podatki kažejo, da smo se odrezali precej slabo, saj se je naša zadolženost v 9 letih povečala za 60% in malo je držav, ki bi se zadolževale s tako hitrostjo. To nas postavi vštric z državami kot so Portugalska, `Grčija`, `Irska` in `Velika Britanija`, od katerih so prve tri znane kot bolnice evrope. Prav zato je sedaj toliko bolj razumljivo zakaj so bile pred leti napovedi, da bo v našo državo prišla trojka, saj smo se zadolževali z rekordno hitrostjo.
 
-Od naslednjih dveh grafov prvi prikazuje hitrost zadolževanja `Slovenije`, medtem ko drugi kaže hitrost zadolževanja `Madžarske`, kar je hitrost s katero se je zadolževala večina drugih evropskih držav. 
+Od naslednjih dveh grafov prvi prikazuje hitrost zadolževanja `Slovenije`, medtem ko drugi kaže hitrost zadolževanja `Madžarske`, kar je hitrost s katero se je zadolževala večina drugih evropskih držav.
 
 
 
-```{r graf8, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolzevanja Slovenije', fig.align='center'}
-print(osmi_graf)
-```
 
 
-```{r graf9, echo=FALSE, warning=FALSE, fig.cap='Hitrost zadolzevanja Madzarske', fig.align='center'}
-print(deveti_graf)
+
+```{r, echo = FALSE}
+
+
+radioButtons("variable","Drzave:",inline=TRUE,choices = c('AUT',"BEL","CZE","DNK","FIN","FRA","DEU","GRC","HUN","IRL","ITA","LUX","NLD","POL","PRT","SVK","ESP","SWE","GBR","EST","SVN"))
+
+
+podatki11 <- rename(podatki1, Leto=Cas)
+
+
+renderPlot({
+  ggplot(podatki11 %>% filter(Drzava==input$variable), 
+                      aes(x = Leto, y = Dolg, fill=Dolg)) +
+  geom_bar(stat ="identity") + 
+  scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
+  ylim(0, 190) 
+})
+
 ```
 
 
