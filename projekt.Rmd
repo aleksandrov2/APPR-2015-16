@@ -165,7 +165,7 @@ Od naslednjih dveh grafov prvi prikazuje hitrost zadolževanja `Slovenije`, medt
 ```{r, echo = FALSE}
 
 
-radioButtons("variable","Drzave:",inline=TRUE,choices = c('AUT',"BEL","CZE","DNK","FIN","FRA","DEU","GRC","HUN","IRL","ITA","LUX","NLD","POL","PRT","SVK","ESP","SWE","GBR","EST","SVN"))
+radioButtons("variable","Drzave:",inline=TRUE,choices = c("SVN",'AUT',"BEL","CZE","DEU","DNK","ESP","EST","FIN","FRA","GBR","GRC","HUN","IRL","ITA","LUX","NLD","POL","PRT","SVK","SWE"))
 
 
 podatki11 <- rename(podatki1, Leto=Cas)
@@ -197,7 +197,7 @@ Za konec analize zgolj evropskega dolga sem ustvaril še zemljevid, ki jasno pri
 ```{r, echo = FALSE}
 
 
-sliderInput("leto_3", "Leto:", min = 2006, max = 2014, value = 2008,sep="")
+sliderInput("leto_3", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
 
 renderPlot({
   Dolg <- filter(podatki1, Cas == input$leto_3)
