@@ -12,9 +12,9 @@ ui <- fluidPage(
     mainPanel(
       tabsetPanel(tabPanel("Comparison",dataTableOutput("table"),plotOutput("plot"),
                            splitLayout(
-                             plotOutput("age"),
-                             plotOutput("origin"),
-                             plotOutput("sex"))),
+                             plotOutput("dolg"),
+                             plotOutput("deficit"),
+                             plotOutput("zemljevid"))),
                   tabPanel("Prediction",plotOutput("prediction"))
       )
     )
