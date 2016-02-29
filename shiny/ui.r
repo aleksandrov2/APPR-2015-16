@@ -13,11 +13,10 @@ shinyUI(
         tabsetPanel(tabPanel("Grafi",dataTableOutput("table"),plotOutput("plot"),
                              splitLayout(
                                plotOutput("dolg"),
-                               plotOutput("deficit"),
-                               plotOutput("zemljevid")))
+                               plotOutput("deficit")
+                               ))
         )
       )
     )
   )
 )
-
