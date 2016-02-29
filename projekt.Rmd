@@ -194,6 +194,23 @@ print(deseti_graf)
 Za konec analize zgolj evropskega dolga sem ustvaril še zemljevid, ki jasno prikazuje porazdelitev in lokacijo visoko zadolženih držav. Na grobo se že vidi, da so države na severu precej manj zadolžene, med njimi še posebej prednjači `Estonija`, ki je zadolžena samo za 6% BDP.
 
 
+```{r, echo = FALSE}
+
+
+sliderInput("leto_3", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
+
+renderPlot({
+  Dolg <- filter(podatki1, Cas == input$leto_3)
+  m1 <- match(svet$adm0_a3, Dolg$Drzava)
+  svet$Dolg <- Dolg$Dolg[m1]
+  evropa <- pretvori.zemljevid(svet, svet$continent == "Europe")
+  ggplot() + geom_polygon(data = evropa, aes(x=long, y=lat, group = group, fill = Dolg),
+                                color = "grey") + xlim(-10, 50) + ylim(34, 72) + 
+  scale_fill_continuous(low = "#69b8f6", high = "#142d45") + xlab("") + ylab("") 
+})
+
+```
+
 ```{r zem1, echo=FALSE, warning=FALSE, fig.cap='Zadolzenost evropskih drzav leta 2014', fig.align='center'}
 print(zem1)
 ```
@@ -229,10 +246,10 @@ Potem sem lahko tudi eksplicitno izračunal pričakovani deficit, npr. če bi im
 ```{r, echo = FALSE}
 
 
-sliderInput("leto_3", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
+sliderInput("leto_4", "Leto:", min = 2006, max = 2014, value = 2006,sep="")
 
 renderPlot({
-  ggplot(podatki3 %>% filter(Cas == input$leto_3),
+  ggplot(podatki3 %>% filter(Cas == input$leto_4),
                       aes(x = Dolg, y = Deficit)) + 
   guides(color = guide_legend(ncol = 2)) +
   geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
@@ -242,7 +259,7 @@ renderPlot({
 })
 
 renderTable({
-napoved <- lm(data = podatki3 %>% filter(Cas == input$leto_3), Deficit ~ Dolg)
+napoved <- lm(data = podatki3 %>% filter(Cas == input$leto_4), Deficit ~ Dolg)
 predict(napoved, data.frame(Dolg=seq(0, 250, 25)))
 
 napoved.tabela <- data.frame(Dolg=seq(0, 250, 25))
