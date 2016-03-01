@@ -15,7 +15,12 @@ shinyUI(
                plotOutput("zadolženost")),
       tabPanel("Zemljevid",
                sliderInput(inputId="leto_3",label="Leto",min=2006,max=2014,value=2006,sep=""),
-               plotOutput("zemljevid"))
+               plotOutput("zemljevid")),
+      tabPanel("Predikcija",
+               sliderInput(inputId="leto_4",label="Leto",min=2006,max=2014,value=2006,sep=""),
+               plotOutput("predikcija"))
+      
+      
     )
   )
 )
