@@ -120,17 +120,9 @@ renderPlot({
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
   geom_bar(stat ="identity") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
-  ylim(0, 190)
+  ylim(0, 190) + xlab("") + ylab("")
 })
 
-```
-
-
-Naslednji graf prikazuje zadolženost evropskih držav leta 2014, vendar je tukaj vsaka država aproksimirana s piko in njena velikost ponazarja dolg države. Prav tako je na grafu z rdečo črto označena povprečna zadolženost, ki je že skoraj dosegla 100% bruto domačega proizvoda. Vidimo lahko, da sta edini svetli izjemi `Luxemburg`, bogata majhna državica, ki si to lahko privošči zaradi svojih velikih bank in `Estonija`, ki se drži zelo konzervativne politike uravnotežene rasti.  
-
-
-```{r graf3, echo=FALSE, warning=FALSE, fig.cap='Dolg evropskih drzav leta 2014 in njihova povprecna zadolzenost', fig.align='center'}
-print(tretji_graf)
 ```
 
 
@@ -147,7 +139,7 @@ renderPlot({
   y = Deficit, fill=Deficit)) + 
   geom_bar(stat ="identity") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + 
-  ylim(-33, 6)
+  ylim(-33, 6) + xlab("") + ylab("")
 })
 
 ```
@@ -176,7 +168,7 @@ renderPlot({
                       aes(x = factor(Leto), y = Dolg, fill=Dolg)) +
   geom_bar(stat ="identity") + 
   scale_fill_continuous(low = "#69b8f6", high = "#142d45") + 
-  ylim(0, 190) + labs(x = "Leto")
+  ylim(0, 190) + labs(x = "Leto") + xlab("") + ylab("")
 })
 
 ```
