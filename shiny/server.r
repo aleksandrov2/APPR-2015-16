@@ -1,4 +1,3 @@
-
 library(shiny)
 
 shinyServer(
@@ -41,6 +40,15 @@ shinyServer(
         scale_fill_continuous(low = "#69b8f6", high = "#142d45",limits = c(0, 200)) + xlab("") + ylab("") 
     })
     
+    output$predikcija <- renderPlot({
+      ggplot(podatki3 %>% filter(Cas == input$leto_4),
+             aes(x = Dolg, y = Deficit)) + 
+        guides(color = guide_legend(ncol = 2)) +
+        geom_point(aes(color = Drzava, size = Dolg-10*Deficit)) +
+        geom_hline(yintercept=crta) + 
+        geom_hline(yintercept=crta1, colour="red") +
+        geom_smooth(method = "lm") 
+    })
     
   }
 )
